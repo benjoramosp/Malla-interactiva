@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // === CREAR RAMOS ===
+  // === CREAR RAMO ===
   function crearRamo(nombre, datos) {
     const div = document.createElement("div");
     div.className = `ramo bloqueado ${datos.ciclo}`;
@@ -344,7 +344,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (columna) columna.appendChild(div);
   }
 
-  // === DESBLOQUEAR RAMO SI SE CUMPLEN REQUISITOS ===
+  // === APROBAR UN RAMO ===
+  function aprobar(nombre) {
+    const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
+    if (!ramo) return;
+
+    // Marcar como aprobado
+    ramo.classList.remove("activo");
+    ramo.classList.add("aprobado");
+    ramo.dataset.estado = "aprobado";
+
+    // Remover cualquier evento anterior (clonando el nodo)
+    const nuevoRamo = ramo.cloneNode(true);
+    ramo.parentNode.replaceChild(nuevoRamo, ramo);
+
+    // Desbloquear los ramos que este abre
+    const abre = ramos[nombre].abre || [];
+    abre.forEach(desbloquear);
+  }
+
+  // === DESBLOQUEAR UN RAMO SI CUMPLE LOS REQUISITOS ===
   function desbloquear(nombre) {
     const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
     if (!ramo || ramo.dataset.estado !== "bloqueado") return;
@@ -363,20 +382,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // === APROBAR UN RAMO ===
-  function aprobar(nombre) {
-    const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
-    if (!ramo) return;
-
-    ramo.classList.remove("activo");
-    ramo.classList.add("aprobado");
-    ramo.dataset.estado = "aprobado";
-    ramo.removeEventListener("click", () => aprobar(nombre)); // prevenir múltiples aprobaciones
-
-    const abre = ramos[nombre].abre || [];
-    abre.forEach(desbloquear);
-  }
-
   // === INICIALIZAR MALLA ===
   function inicializarMalla() {
     crearSemestres();
@@ -384,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
       crearRamo(nombre, datos);
     }
 
-    // Desbloquea ramos sin requisitos
+    // Desbloquear todos los ramos sin requisitos
     for (const nombre in ramos) {
       if (!ramos[nombre].requisitos || ramos[nombre].requisitos.length === 0) {
         const div = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
