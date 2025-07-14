@@ -11,27 +11,42 @@ h1 {
   margin-bottom: 40px;
 }
 
-/* === CICLO CON SEMESTRES EN COLUMNAS === */
-.ciclo {
+/* === CABECERA DE CICLO COMO FRANJA === */
+.ciclo-titulo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #444;
+  margin: 50px 0 10px;
+  padding: 10px 0;
+  border-top: 3px solid #ccc;
+  border-bottom: 1px solid #aaa;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+/* === CONTENEDOR DE SEMESTRES === */
+.ciclo-grid {
   display: grid;
-  grid-template-columns: repeat(14, 1fr); /* 14 semestres */
   gap: 10px;
   margin-bottom: 60px;
   overflow-x: auto;
   padding-bottom: 10px;
 }
 
-/* === CABECERA DE CICLO === */
-.ciclo h2 {
-  grid-column: 1 / -1;
-  margin-bottom: 20px;
-  font-size: 1.4rem;
-  color: #444;
-  border-left: 6px solid #aaa;
-  padding-left: 10px;
+/* Específicos por ciclo */
+.ciclo-grid.basico {
+  grid-template-columns: repeat(4, 1fr);
 }
 
-/* === CONTENEDOR DE UN SEMESTRE === */
+.ciclo-grid.intermedio {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.ciclo-grid.avanzado {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* === SEMESTRE === */
 .semestre {
   display: flex;
   flex-direction: column;
@@ -50,7 +65,7 @@ h1 {
   padding-bottom: 4px;
 }
 
-/* === CUADRO DE RAMO === */
+/* === RAMO === */
 .ramo {
   padding: 8px;
   border-radius: 6px;
@@ -62,7 +77,7 @@ h1 {
   transition: all 0.2s;
 }
 
-/* === ESTADOS DE RAMO === */
+/* === ESTADOS === */
 .ramo.bloqueado {
   opacity: 0.4;
   pointer-events: none;
@@ -93,15 +108,15 @@ h1 {
   color: #6FB065;
 }
 
-/* SCROLL HORIZONTAL SI PANTALLA ES ANGOSTA */
+/* === RESPONSIVO === */
 @media (max-width: 1200px) {
-  .ciclo {
+  .ciclo-grid {
+    display: flex !important;
     overflow-x: auto;
-    display: flex;
     gap: 20px;
   }
 
   .semestre {
-    min-width: 200px;
+    min-width: 220px;
   }
 }
