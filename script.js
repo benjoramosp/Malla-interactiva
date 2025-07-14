@@ -320,17 +320,24 @@ const ramos = {
 
 document.addEventListener("DOMContentLoaded", () => {
   // === CREAR SEMESTRES (1 al 14) ===
-  function crearSemestres() {
-    const contenedor = document.querySelector(".linea-tiempo");
-    for (let i = 1; i <= 14; i++) {
-      const columna = document.createElement("div");
-      columna.className = `semestre semestre-${i}`;
-      const titulo = document.createElement("h3");
-      titulo.textContent = `Semestre ${i}`;
-      columna.appendChild(titulo);
-      contenedor.appendChild(columna);
-    }
+function crearSemestres() {
+  const contenedor = document.querySelector(".linea-tiempo");
+  for (let i = 1; i <= 14; i++) {
+    const columna = document.createElement("div");
+    columna.className = `semestre semestre-${i}`;
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = `Semestre ${i}`;
+    columna.appendChild(titulo);
+
+    // Detectar ciclo
+    if (i >= 1 && i <= 4) columna.classList.add("basico");
+    else if (i >= 5 && i <= 10) columna.classList.add("intermedio");
+    else columna.classList.add("avanzado");
+
+    contenedor.appendChild(columna);
   }
+}
 
   // === CREAR RAMO ===
   function crearRamo(nombre, datos) {
