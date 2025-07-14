@@ -265,12 +265,12 @@ const ramos = {
   "Internado de Medicina Interna": {
     ciclo: "avanzado", semestre: 11,
     requisitos: ["Pediatría II", "Ginecología y Obstetricia II", "Especialidades II", "Medicina de Urgencia y Trauma", "Razonamiento Médico - Clínico III"],
-    abre: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado de Medicina de Urgencia y Traumatología"]
+    abre: ["Internado de Salud Mental", "Internado de Medicina Familiar", "Internado Electivo I", "Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado de Medicina de Urgencia y Traumatología"]
   },
   "Internado de Pediatría": {
     ciclo: "avanzado", semestre: 11,
     requisitos: ["Pediatría II"],
-    abre: ["Internado Electivo II", "Internado de Medicina de Urgencia y Traumatología"]
+    abre: ["Internado de Salud Mental", "Internado de Medicina Familiar", "Internado Electivo I", "Internado Electivo II", "Internado de Medicina de Urgencia y Traumatología"]
   },
 
   // Semestre 12
