@@ -275,14 +275,29 @@ const ramos = {
   "Internado Electivo I": { ciclo: "avanzado", semestre: 12 },
 
   // Semestre 13
-  "Internado de Especialidades de la Medicina Interna": { ciclo: "avanzado", semestre: 13 },
-  "Internado de Cirugía y Urología": { ciclo: "avanzado", semestre: 13 },
-  "Internado Electivo II": { ciclo: "avanzado", semestre: 13 },
+  "Internado de Especialidades de la Medicina Interna": { 
+    ciclo: "avanzado", semestre: 13 
+  },
+  "Internado de Cirugía y Urología": { 
+    ciclo: "avanzado", semestre: 13 
+  },
+  "Internado Electivo II": { 
+    ciclo: "avanzado", semestre: 13 
+  },
 
   // Semestre 14
-  "Internado de Ginecología y Obstetricia": { ciclo: "avanzado", semestre: 14 },
-  "Internado de Medicina de Urgencia y Traumatología": { ciclo: "avanzado", semestre: 14 },
-  "Razonamiento Médico - Clínico IV": { ciclo: "avanzado", semestre: 14 }
+  "Internado de Ginecología y Obstetricia": { 
+    ciclo: "avanzado", semestre: 14
+    requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
+  },
+  "Internado de Medicina de Urgencia y Traumatología": { 
+    ciclo: "avanzado", semestre: 14
+    requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
+  },
+  "Razonamiento Médico - Clínico IV": { 
+    ciclo: "avanzado", semestre: 14
+    requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
+  }
 });
 
 function crearSemestres() {
