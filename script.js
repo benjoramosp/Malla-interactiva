@@ -97,23 +97,21 @@ const ramos = {
   "Razonamiento Médico - Clínico IV": { ciclo: "avanzado", semestre: 14 }
 };
 
-// === CANTIDAD DE SEMESTRES GLOBALES ===
+// === CANTIDAD TOTAL DE SEMESTRES (NO RELATIVO AL CICLO, SINO GENERAL) ===
 const TOTAL_SEMESTRES = 14;
 
-// === FUNCIÓN PARA CREAR SEMESTRES ===
 function crearSemestres() {
   const contenedor = document.querySelector(".linea-tiempo");
-  for (let i = 1; i <= TOTAL_SEMESTRES; i++) {
-    const div = document.createElement("div");
-    div.classList.add("semestre", `semestre-${i}`);
+  for (let semestre = 1; semestre <= TOTAL_SEMESTRES; semestre++) {
+    const divSemestre = document.createElement("div");
+    divSemestre.classList.add("semestre", `semestre-${semestre}`);
     const h3 = document.createElement("h3");
-    h3.textContent = `Semestre ${i}`;
-    div.appendChild(h3);
-    contenedor.appendChild(div);
+    h3.textContent = `Semestre ${semestre}`;
+    divSemestre.appendChild(h3);
+    contenedor.appendChild(divSemestre);
   }
 }
 
-// === FUNCIÓN PARA CREAR RAMO ===
 function crearRamo(nombre, data) {
   const div = document.createElement("div");
   div.classList.add("ramo", "bloqueado", data.ciclo);
@@ -121,11 +119,20 @@ function crearRamo(nombre, data) {
   div.dataset.nombre = nombre;
   div.dataset.estado = "bloqueado";
 
-  const contenedor = document.querySelector(`.semestre-${data.semestre}`);
-  contenedor.appendChild(div);
+  const semestreAbsoluto = obtenerSemestreAbsoluto(data.ciclo, data.semestre);
+  const divSemestre = document.querySelector(`.semestre-${semestreAbsoluto}`);
+  if (divSemestre) {
+    divSemestre.appendChild(div);
+  }
 }
 
-// === FUNCIÓN PARA DESBLOQUEAR RAMO ===
+function obtenerSemestreAbsoluto(ciclo, relativo) {
+  if (ciclo === "basico") return relativo;
+  if (ciclo === "intermedio") return 4 + relativo;
+  if (ciclo === "avanzado") return 10 + relativo;
+  return relativo; // fallback
+}
+
 function desbloquear(nombre) {
   const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
   if (!ramo || !ramo.classList.contains("bloqueado")) return;
@@ -142,9 +149,10 @@ function desbloquear(nombre) {
   }
 }
 
-// === FUNCIÓN PARA MARCAR COMO APROBADO ===
 function aprobar(nombre) {
   const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
+  if (!ramo || ramo.dataset.estado === "aprobado") return;
+
   ramo.classList.add("aprobado");
   ramo.removeEventListener("click", () => aprobar(nombre));
   ramo.dataset.estado = "aprobado";
@@ -153,7 +161,6 @@ function aprobar(nombre) {
   abre.forEach(desbloquear);
 }
 
-// === INICIALIZACIÓN ===
 function inicializarMalla() {
   crearSemestres();
   for (const [nombre, data] of Object.entries(ramos)) {
