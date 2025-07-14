@@ -285,8 +285,61 @@ const ramos = {
     "Internado de Medicina Interna"
   ]
 }
-  // === CICLO AVANZADO ===
-  // Semestre 11
+// === SEMESTRE 10 ===
+"Pediatría II": {
+  ciclo: "intermedio",
+  semestre: 10,
+  requisitos: ["Pediatría I"],
+  abre: [
+    "Internado de Medicina Interna",
+    "Internado de Pediatría"
+  ]
+},
+"Ginecología y Obstetricia II": {
+  ciclo: "intermedio",
+  semestre: 10,
+  requisitos: ["Ginecología y Obstetricia I"],
+  abre: [
+    "Internado de Medicina Interna"
+  ]
+},
+"Especialidades II": {
+  ciclo: "intermedio",
+  semestre: 10,
+  requisitos: [
+    "Medicina Familiar y Comunitaria",
+    "Cuidados Paliativos y del Fin de la Vida"
+  ],
+  abre: [
+    "Internado de Medicina Interna"
+  ]
+},
+"Medicina de Urgencia y Trauma": {
+  ciclo: "intermedio",
+  semestre: 10,
+  requisitos: [
+    "Pediatría I",
+    "Ginecología y Obstetricia I",
+    "Cuidados Paliativos y del Fin de la Vida"
+  ],
+  abre: [
+    "Internado de Medicina Interna"
+  ]
+},
+"Razonamiento Médico - Clínico III": {
+  ciclo: "intermedio",
+  semestre: 10,
+  requisitos: [
+    "Medicina Familiar y Comunitaria",
+    "Cuidados Paliativos y del Fin de la Vida"
+  ],
+  abre: [
+    "Internado de Medicina Interna"
+  ]
+},
+
+// === CICLO AVANZADO ===
+// SEMESTRE 11
 "Internado de Medicina Interna": {
   ciclo: "avanzado",
   semestre: 11,
@@ -311,23 +364,93 @@ const ramos = {
     "Internado Electivo II",
     "Internado de Medicina de Urgencia y Traumatología"
   ]
+},
+
+// SEMESTRE 12
+"Internado de Salud Mental": {
+  ciclo: "avanzado",
+  semestre: 12,
+  abre: ["Internado de Especialidades de la Medicina Interna"]
+},
+"Internado de Medicina Familiar": {
+  ciclo: "avanzado",
+  semestre: 12,
+  abre: [
+    "Internado Electivo II",
+    "Internado de Medicina de Urgencia y Traumatología"
+  ]
+},
+"Internado Electivo I": {
+  ciclo: "avanzado",
+  semestre: 12
+},
+
+// SEMESTRE 13
+"Internado de Especialidades de la Medicina Interna": {
+  ciclo: "avanzado",
+  semestre: 13,
+  requisitos: [
+    "Internado de Medicina Interna",
+    "Internado de Salud Mental"
+  ],
+  abre: [
+    "Internado de Ginecología y Obstetricia",
+    "Internado de Medicina de Urgencia y Traumatología",
+    "Razonamiento Médico - Clínico IV"
+  ]
+},
+"Internado de Cirugía y Urología": {
+  ciclo: "avanzado",
+  semestre: 13,
+  requisitos: ["Internado de Medicina Interna"],
+  abre: [
+    "Internado de Ginecología y Obstetricia",
+    "Internado de Medicina de Urgencia y Traumatología",
+    "Razonamiento Médico - Clínico IV"
+  ]
+},
+"Internado Electivo II": {
+  ciclo: "avanzado",
+  semestre: 13,
+  requisitos: [
+    "Internado de Pediatría",
+    "Internado de Medicina Familiar"
+  ],
+  abre: [
+    "Internado de Ginecología y Obstetricia",
+    "Internado de Medicina de Urgencia y Traumatología",
+    "Razonamiento Médico - Clínico IV"
+  ]
+},
+
+// SEMESTRE 14
+"Internado de Ginecología y Obstetricia": {
+  ciclo: "avanzado",
+  semestre: 14,
+  requisitos: [
+    "Internado de Especialidades de la Medicina Interna",
+    "Internado de Cirugía y Urología",
+    "Internado Electivo II"
+  ]
+},
+"Internado de Medicina de Urgencia y Traumatología": {
+  ciclo: "avanzado",
+  semestre: 14,
+  requisitos: [
+    "Internado de Especialidades de la Medicina Interna",
+    "Internado de Cirugía y Urología",
+    "Internado Electivo II"
+  ]
+},
+"Razonamiento Médico - Clínico IV": {
+  ciclo: "avanzado",
+  semestre: 14,
+  requisitos: [
+    "Internado de Especialidades de la Medicina Interna",
+    "Internado de Cirugía y Urología",
+    "Internado Electivo II"
+  ]
 }
-
-  // Semestre 12
-  "Internado de Salud Mental": { ciclo: "avanzado", semestre: 12 },
-  "Internado de Medicina Familiar": { ciclo: "avanzado", semestre: 12 },
-  "Internado Electivo I": { ciclo: "avanzado", semestre: 12 },
-
-  // Semestre 13
-  "Internado de Especialidades de la Medicina Interna": { ciclo: "avanzado", semestre: 13 },
-  "Internado de Cirugía y Urología": { ciclo: "avanzado", semestre: 13 },
-  "Internado Electivo II": { ciclo: "avanzado", semestre: 13 },
-
-  // Semestre 14
-  "Internado de Ginecología y Obstetricia": { ciclo: "avanzado", semestre: 14 },
-  "Internado de Medicina de Urgencia y Traumatología": { ciclo: "avanzado", semestre: 14 },
-  "Razonamiento Médico - Clínico IV": { ciclo: "avanzado", semestre: 14 }
-});
 
 // === FUNCIONES PARA CONSTRUIR LA MALLA ===
 function crearSemestres() {
