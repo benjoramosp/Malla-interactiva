@@ -261,34 +261,48 @@ const ramos = {
   },
 
   // === CICLO AVANZADO ===
-  // Semestre 11
-  "Internado de Medicina Interna": {
-    ciclo: "avanzado", semestre: 11,
-    requisitos: ["Pediatría II", "Ginecología y Obstetricia II", "Especialidades II", "Medicina de Urgencia y Trauma", "Razonamiento Médico - Clínico III"],
-    abre: ["Internado de Salud Mental", "Internado de Medicina Familiar", "Internado Electivo I", "Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado de Medicina de Urgencia y Traumatología"]
-  },
-  "Internado de Pediatría": {
-    ciclo: "avanzado", semestre: 11,
-    requisitos: ["Pediatría II"],
-    abre: ["Internado de Salud Mental", "Internado de Medicina Familiar", "Internado Electivo I", "Internado Electivo II", "Internado de Medicina de Urgencia y Traumatología"]
-  },
+ // === CICLO AVANZADO ===
+// Semestre 11
+"Internado de Medicina Interna": {
+  ciclo: "avanzado", semestre: 11,
+  requisitos: [
+    "Pediatría II",
+    "Ginecología y Obstetricia II",
+    "Especialidades II",
+    "Medicina de Urgencia y Trauma",
+    "Razonamiento Médico - Clínico III"
+  ],
+  abre: [
+    "Internado de Especialidades de la Medicina Interna",
+    "Internado de Cirugía y Urología",
+    "Internado de Medicina de Urgencia y Traumatología"
+  ]
+},
+"Internado de Pediatría": {
+  ciclo: "avanzado", semestre: 11,
+  requisitos: ["Pediatría II"],
+  abre: [
+    "Internado Electivo II",
+    "Internado de Medicina de Urgencia y Traumatología"
+  ]
+},
 
-  // Semestre 12
-  "Internado de Salud Mental": {
-    ciclo: "avanzado", semestre: 12,
-    requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"],
-    abre: ["Internado de Especialidades de la Medicina Interna"]
-  },
-  "Internado de Medicina Familiar": {
-    ciclo: "avanzado", semestre: 12,
-    requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"],
-    abre: ["Internado Electivo II", "Internado de Medicina de Urgencia y Traumatología"]
-  },
-  "Internado Electivo I": {
-    ciclo: "avanzado", semestre: 12,
-    requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"]
-  },
-
+// Semestre 12
+"Internado de Salud Mental": {
+  ciclo: "avanzado", semestre: 12,
+  requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"],
+  abre: ["Internado de Especialidades de la Medicina Interna"]
+},
+"Internado de Medicina Familiar": {
+  ciclo: "avanzado", semestre: 12,
+  requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"],
+  abre: ["Internado Electivo II", "Internado de Medicina de Urgencia y Traumatología"]
+},
+"Internado Electivo I": {
+  ciclo: "avanzado", semestre: 12,
+  requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"]
+},
+  
   // Semestre 13
   "Internado de Especialidades de la Medicina Interna": {
     ciclo: "avanzado", semestre: 13,
