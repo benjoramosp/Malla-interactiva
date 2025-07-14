@@ -276,17 +276,17 @@ const ramos = {
   // Semestre 12
   "Internado de Salud Mental": {
     ciclo: "avanzado", semestre: 12,
-    requisitos: ["Internado de Pediatría","Internado de Medicina Interna"],
+    requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"],
     abre: ["Internado de Especialidades de la Medicina Interna"]
   },
   "Internado de Medicina Familiar": {
     ciclo: "avanzado", semestre: 12,
-    requisitos: ["Internado de Pediatría","Internado de Medicina Interna"],
+    requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"],
     abre: ["Internado Electivo II", "Internado de Medicina de Urgencia y Traumatología"]
   },
   "Internado Electivo I": {
     ciclo: "avanzado", semestre: 12,
-    requisitos: ["Internado de Pediatría","Internado de Medicina Interna"]
+    requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"]
   },
 
   // Semestre 13
