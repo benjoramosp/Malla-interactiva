@@ -106,3 +106,14 @@ h1 {
     min-width: 220px;
   }
 }
+.semestre.basico {
+  background-color: #E8EDEB;
+}
+
+.semestre.intermedio {
+  background-color: #EEF7FD;
+}
+
+.semestre.avanzado {
+  background-color: #ECF3E9;
+}
