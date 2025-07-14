@@ -161,10 +161,8 @@ const ramos = {
   },
   "Electivo de Formación Integral IV": {
     ciclo: "intermedio", semestre: 6
-  }
-};
+  },
 
-Object.assign(ramos, {
   // === SEMESTRE 7 ===
   "Medicina Interna I": {
     ciclo: "intermedio", semestre: 7,
