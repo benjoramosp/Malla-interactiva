@@ -1,5 +1,6 @@
 const ramos = {
-  // === SEMESTRE 1 ===
+  // === CICLO BÁSICO ===
+  // Semestre 1
   "Biología Celular": {
     ciclo: "basico", semestre: 1,
     abre: ["Biología Molecular y Genética", "Bioquímica General", "Soporte Básico Vital, Primeros Auxilios y Principios de Enfermería"]
@@ -19,7 +20,7 @@ const ramos = {
     abre: ["Morfología Integrada y Orientada a la Práctica Médica I", "Integración ABP II"]
   },
 
-  // === SEMESTRE 2 ===
+  // Semestre 2
   "Biología Molecular y Genética": {
     ciclo: "basico", semestre: 2,
     requisitos: ["Biología Celular"],
@@ -54,7 +55,7 @@ const ramos = {
     abre: ["Ética"]
   },
 
-  // === SEMESTRE 3 ===
+// Semestre 3
   "Bioestadística y Principios de Medicina Basada en la Evidencia": {
     ciclo: "basico", semestre: 3,
     abre: ["Salud Poblacional", "Metodología de la Investigación"]
@@ -84,7 +85,7 @@ const ramos = {
     abre: ["Electivo de Formación Integral I"]
   },
 
-  // === SEMESTRE 4 ===
+  // Semestre 4
   "Fisiopatología Médica": {
     ciclo: "basico", semestre: 4,
     requisitos: ["Fisiología Médica"],
@@ -110,7 +111,8 @@ const ramos = {
     requisitos: ["Ética"]
   },
 
-  // === SEMESTRE 5 ===
+  // === CICLO INTERMEDIO ===
+  // Semestre 5
   "Semiología I": {
     ciclo: "intermedio", semestre: 5,
     requisitos: ["Fisiopatología Médica", "Morfología Integrada y Orientada a la Práctica Médica III", "Razonamiento Médico - Clínico I"],
@@ -129,14 +131,10 @@ const ramos = {
     ciclo: "intermedio", semestre: 5,
     requisitos: ["Razonamiento Médico - Clínico I"]
   },
-  "Electivo de Formación Integral II": {
-    ciclo: "intermedio", semestre: 5
-  },
-  "Electivo de Formación Integral III": {
-    ciclo: "intermedio", semestre: 5
-  },
+  "Electivo de Formación Integral II": { ciclo: "intermedio", semestre: 5 },
+  "Electivo de Formación Integral III": { ciclo: "intermedio", semestre: 5 },
 
-  // === SEMESTRE 6 ===
+  // Semestre 6
   "Semiología II": {
     ciclo: "intermedio", semestre: 6,
     requisitos: ["Semiología I", "Patología Médica"],
@@ -159,11 +157,9 @@ const ramos = {
     requisitos: ["Semiología I", "Patología Médica", "Razonamiento Médico - Clínico I"],
     abre: ["Medicina Interna I", "Cirugía I", "Psiquiatría I", "Salud Pueblos Originarios y Migrantes"]
   },
-  "Electivo de Formación Integral IV": {
-    ciclo: "intermedio", semestre: 6
-  },
+  "Electivo de Formación Integral IV": { ciclo: "intermedio", semestre: 6 },
 
-  // === SEMESTRE 7 ===
+  // Semestre 7
   "Medicina Interna I": {
     ciclo: "intermedio", semestre: 7,
     requisitos: ["Microbiología Médica", "Semiología II", "Razonamiento Médico - Clínico II"],
@@ -185,7 +181,7 @@ const ramos = {
     abre: ["Medicina Legal, Responsabilidad Médica y Obligaciones Profesionales"]
   },
 
-  // === SEMESTRE 8 ===
+  // Semestre 8
   "Medicina Interna II": {
     ciclo: "intermedio", semestre: 8,
     requisitos: ["Medicina Interna I"],
@@ -207,7 +203,7 @@ const ramos = {
     abre: ["Pediatría I", "Ginecología y Obstetricia I", "Cuidados Paliativos y del Fin de la Vida", "Salud Poblacional Aplicada a la Medicina"]
   },
 
-  // === SEMESTRE 9 ===
+  // Semestre 9
   "Pediatría I": {
     ciclo: "intermedio", semestre: 9,
     requisitos: ["Medicina Interna II", "Psiquiatría II", "Medicina Legal, Responsabilidad Médica y Obligaciones Profesionales"],
@@ -237,37 +233,20 @@ const ramos = {
     requisitos: ["Medicina Legal, Responsabilidad Médica y Obligaciones Profesionales"]
   },
 
-  // === SEMESTRE 10 ===
-  "Pediatría II": {
-    ciclo: "intermedio", semestre: 10,
-    requisitos: ["Pediatría I"]
-  },
-  "Ginecología y Obstetricia II": {
-    ciclo: "intermedio", semestre: 10,
-    requisitos: ["Ginecología y Obstetricia I"]
-  },
-  "Especialidades II": {
-    ciclo: "intermedio", semestre: 10,
-    requisitos: ["Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"]
-  },
-  "Medicina de Urgencia y Trauma": {
-    ciclo: "intermedio", semestre: 10,
-    requisitos: ["Pediatría I", "Ginecología y Obstetricia I", "Cuidados Paliativos y del Fin de la Vida"]
-  },
-  "Razonamiento Médico - Clínico III": {
-    ciclo: "intermedio", semestre: 10,
-    requisitos: ["Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"]
-  },
-  
+  // Semestre 10
+  "Pediatría II": { ciclo: "intermedio", semestre: 10, requisitos: ["Pediatría I"] },
+  "Ginecología y Obstetricia II": { ciclo: "intermedio", semestre: 10, requisitos: ["Ginecología y Obstetricia I"] },
+  "Especialidades II": { ciclo: "intermedio", semestre: 10, requisitos: ["Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"] },
+  "Medicina de Urgencia y Trauma": { ciclo: "intermedio", semestre: 10, requisitos: ["Pediatría I", "Ginecología y Obstetricia I", "Cuidados Paliativos y del Fin de la Vida"] },
+  "Razonamiento Médico - Clínico III": { ciclo: "intermedio", semestre: 10, requisitos: ["Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"] },
+
+  // === CICLO AVANZADO ===
   // Semestre 11
   "Internado de Medicina Interna": {
     ciclo: "avanzado", semestre: 11,
     requisitos: ["Pediatría II", "Ginecología y Obstetricia II", "Especialidades II", "Medicina de Urgencia y Trauma", "Razonamiento Médico - Clínico III"]
   },
-  "Internado de Pediatría": {
-    ciclo: "avanzado", semestre: 11,
-    requisitos: ["Pediatría II"]
-  },
+  "Internado de Pediatría": { ciclo: "avanzado", semestre: 11, requisitos: ["Pediatría II"] },
 
   // Semestre 12
   "Internado de Salud Mental": { ciclo: "avanzado", semestre: 12 },
@@ -275,75 +254,56 @@ const ramos = {
   "Internado Electivo I": { ciclo: "avanzado", semestre: 12 },
 
   // Semestre 13
-  "Internado de Especialidades de la Medicina Interna": { 
-    ciclo: "avanzado", semestre: 13 
-  },
-  "Internado de Cirugía y Urología": { 
-    ciclo: "avanzado", semestre: 13 
-  },
-  "Internado Electivo II": { 
-    ciclo: "avanzado", semestre: 13 
-  },
+  "Internado de Especialidades de la Medicina Interna": { ciclo: "avanzado", semestre: 13 },
+  "Internado de Cirugía y Urología": { ciclo: "avanzado", semestre: 13 },
+  "Internado Electivo II": { ciclo: "avanzado", semestre: 13 },
 
-// Semestre 14
-"Internado de Ginecología y Obstetricia": { 
-  ciclo: "avanzado", semestre: 14,
-  requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
-},
-"Internado de Medicina de Urgencia y Traumatología": { 
-  ciclo: "avanzado", semestre: 14,
-  requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
-},
-"Razonamiento Médico - Clínico IV": { 
-  ciclo: "avanzado", semestre: 14,
-  requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
-}
-};
+  // Semestre 14
+  "Internado de Ginecología y Obstetricia": { ciclo: "avanzado", semestre: 14 },
+  "Internado de Medicina de Urgencia y Traumatología": { ciclo: "avanzado", semestre: 14 },
+  "Razonamiento Médico - Clínico IV": { ciclo: "avanzado", semestre: 14 }
+});
 
-
-// === CREAR LOS 14 SEMESTRES EN ORDEN HORIZONTAL ===
+// === FUNCIONES PARA CONSTRUIR LA MALLA ===
 function crearSemestres() {
-  const lineaTiempo = document.querySelector(".linea-tiempo");
+  const contenedor = document.querySelector(".linea-tiempo");
   for (let i = 1; i <= 14; i++) {
-    const divSemestre = document.createElement("div");
-    divSemestre.classList.add("semestre", `semestre-${i}`);
-    const h3 = document.createElement("h3");
-    h3.textContent = `Semestre ${i}`;
-    divSemestre.appendChild(h3);
-    lineaTiempo.appendChild(divSemestre);
+    const columna = document.createElement("div");
+    columna.className = `semestre semestre-${i}`;
+    const titulo = document.createElement("h3");
+    titulo.textContent = `Semestre ${i}`;
+    columna.appendChild(titulo);
+    contenedor.appendChild(columna);
   }
 }
 
-// === CREAR UN RAMO EN SU SEMESTRE CORRESPONDIENTE ===
-function crearRamo(nombre, data) {
+function crearRamo(nombre, datos) {
   const div = document.createElement("div");
-  div.classList.add("ramo", "bloqueado", data.ciclo);
+  div.className = `ramo bloqueado ${datos.ciclo}`;
   div.textContent = nombre;
   div.dataset.nombre = nombre;
   div.dataset.estado = "bloqueado";
 
-  const divSemestre = document.querySelector(`.semestre-${data.semestre}`);
-  divSemestre.appendChild(div);
+  const columna = document.querySelector(`.semestre-${datos.semestre}`);
+  columna.appendChild(div);
 }
 
-// === DESBLOQUEA UN RAMO SI SE CUMPLEN LOS REQUISITOS ===
 function desbloquear(nombre) {
   const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
-  if (!ramo || !ramo.classList.contains("bloqueado")) return;
+  if (!ramo || ramo.dataset.estado !== "bloqueado") return;
 
   const requisitos = ramos[nombre].requisitos || [];
-  const todosAprobados = requisitos.every(req =>
+  const todosListos = requisitos.every(req =>
     document.querySelector(`.ramo[data-nombre="${req}"]`)?.dataset.estado === "aprobado"
   );
 
-  if (todosAprobados) {
+  if (todosListos) {
     ramo.classList.remove("bloqueado");
     ramo.dataset.estado = "activo";
     ramo.addEventListener("click", () => aprobar(nombre));
   }
 }
 
-// === CAMBIA ESTADO A "APROBADO" Y DESBLOQUEA LOS SIGUIENTES ===
 function aprobar(nombre) {
   const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
   if (!ramo) return;
@@ -358,17 +318,13 @@ function aprobar(nombre) {
 
 function inicializarMalla() {
   crearSemestres();
-  for (const [nombre, data] of Object.entries(ramos)) {
-    crearRamo(nombre, data);
+  for (const [nombre, datos] of Object.entries(ramos)) {
+    crearRamo(nombre, datos);
   }
   for (const nombre in ramos) {
     if (!ramos[nombre].requisitos) {
       desbloquear(nombre);
     }
-  }
-  // <-- Agrega esto para evaluar desbloqueo de todos los ramos al cargar
-  for (const nombre in ramos) {
-    desbloquear(nombre);
   }
 }
 
