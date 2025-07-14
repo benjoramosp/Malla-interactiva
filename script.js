@@ -318,68 +318,85 @@ const ramos = {
   }
 };
 
-// === FUNCIONES PARA CONSTRUIR LA MALLA ===
-function crearSemestres() {
-  const contenedor = document.querySelector(".linea-tiempo");
-  for (let i = 1; i <= 14; i++) {
-    const columna = document.createElement("div");
-    columna.className = `semestre semestre-${i}`;
-    const titulo = document.createElement("h3");
-    titulo.textContent = `Semestre ${i}`;
-    columna.appendChild(titulo);
-    contenedor.appendChild(columna);
-  }
-}
-
-function crearRamo(nombre, datos) {
-  const div = document.createElement("div");
-  div.className = `ramo bloqueado ${datos.ciclo}`;
-  div.textContent = nombre;
-  div.dataset.nombre = nombre;
-  div.dataset.estado = "bloqueado";
-
-  const columna = document.querySelector(`.semestre-${datos.semestre}`);
-  columna.appendChild(div);
-}
-
-function desbloquear(nombre) {
-  const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
-  if (!ramo || ramo.dataset.estado !== "bloqueado") return;
-
-  const requisitos = ramos[nombre].requisitos || [];
-  const todosListos = requisitos.every(req =>
-    document.querySelector(`.ramo[data-nombre="${req}"]`)?.dataset.estado === "aprobado"
-  );
-
-  if (todosListos) {
-    ramo.classList.remove("bloqueado");
-    ramo.dataset.estado = "activo";
-    ramo.addEventListener("click", () => aprobar(nombre));
-  }
-}
-
-function aprobar(nombre) {
-  const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
-  if (!ramo) return;
-
-  ramo.classList.add("aprobado");
-  ramo.removeEventListener("click", () => aprobar(nombre));
-  ramo.dataset.estado = "aprobado";
-
-  const abre = ramos[nombre].abre || [];
-  abre.forEach(desbloquear);
-}
-
-function inicializarMalla() {
-  crearSemestres();
-  for (const [nombre, datos] of Object.entries(ramos)) {
-    crearRamo(nombre, datos);
-  }
-  for (const nombre in ramos) {
-    if (!ramos[nombre].requisitos) {
-      desbloquear(nombre);
+document.addEventListener("DOMContentLoaded", () => {
+  // === CREAR SEMESTRES (1 al 14) ===
+  function crearSemestres() {
+    const contenedor = document.querySelector(".linea-tiempo");
+    for (let i = 1; i <= 14; i++) {
+      const columna = document.createElement("div");
+      columna.className = `semestre semestre-${i}`;
+      const titulo = document.createElement("h3");
+      titulo.textContent = `Semestre ${i}`;
+      columna.appendChild(titulo);
+      contenedor.appendChild(columna);
     }
   }
-}
 
-inicializarMalla();
+  // === CREAR RAMOS ===
+  function crearRamo(nombre, datos) {
+    const div = document.createElement("div");
+    div.className = `ramo bloqueado ${datos.ciclo}`;
+    div.textContent = nombre;
+    div.dataset.nombre = nombre;
+    div.dataset.estado = "bloqueado";
+
+    const columna = document.querySelector(`.semestre-${datos.semestre}`);
+    if (columna) columna.appendChild(div);
+  }
+
+  // === DESBLOQUEAR RAMO SI SE CUMPLEN REQUISITOS ===
+  function desbloquear(nombre) {
+    const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
+    if (!ramo || ramo.dataset.estado !== "bloqueado") return;
+
+    const requisitos = ramos[nombre].requisitos || [];
+    const todosListos = requisitos.every(req => {
+      const reqRamo = document.querySelector(`.ramo[data-nombre="${req}"]`);
+      return reqRamo && reqRamo.dataset.estado === "aprobado";
+    });
+
+    if (todosListos) {
+      ramo.classList.remove("bloqueado");
+      ramo.classList.add("activo");
+      ramo.dataset.estado = "activo";
+      ramo.addEventListener("click", () => aprobar(nombre));
+    }
+  }
+
+  // === APROBAR UN RAMO ===
+  function aprobar(nombre) {
+    const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
+    if (!ramo) return;
+
+    ramo.classList.remove("activo");
+    ramo.classList.add("aprobado");
+    ramo.dataset.estado = "aprobado";
+    ramo.removeEventListener("click", () => aprobar(nombre)); // prevenir múltiples aprobaciones
+
+    const abre = ramos[nombre].abre || [];
+    abre.forEach(desbloquear);
+  }
+
+  // === INICIALIZAR MALLA ===
+  function inicializarMalla() {
+    crearSemestres();
+    for (const [nombre, datos] of Object.entries(ramos)) {
+      crearRamo(nombre, datos);
+    }
+
+    // Desbloquea ramos sin requisitos
+    for (const nombre in ramos) {
+      if (!ramos[nombre].requisitos || ramos[nombre].requisitos.length === 0) {
+        const div = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
+        if (div) {
+          div.classList.remove("bloqueado");
+          div.classList.add("activo");
+          div.dataset.estado = "activo";
+          div.addEventListener("click", () => aprobar(nombre));
+        }
+      }
+    }
+  }
+
+  inicializarMalla();
+});
