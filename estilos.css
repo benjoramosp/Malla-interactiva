@@ -1,3 +1,4 @@
+/* === ESTILO GENERAL === */
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
@@ -27,7 +28,6 @@ h1 {
   flex: 0 0 260px;
   display: flex;
   flex-direction: column;
-  background-color: #f9f9f9;
   border-radius: 10px;
   padding: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -37,6 +37,19 @@ h1 {
 
 .semestre:hover {
   transform: scale(1.01);
+}
+
+/* === FONDOS SEGÚN CICLO === */
+.semestre.basico {
+  background-color: #E8EDEB;
+}
+
+.semestre.intermedio {
+  background-color: #EEF7FD;
+}
+
+.semestre.avanzado {
+  background-color: #ECF3E9;
 }
 
 /* === TÍTULO DEL SEMESTRE === */
@@ -49,7 +62,7 @@ h1 {
   color: #444;
 }
 
-/* === ESTILO GENERAL DE RAMOS === */
+/* === RAMO (CUADROS) === */
 .ramo {
   background-color: #fff;
   border: 2px solid transparent;
@@ -65,7 +78,7 @@ h1 {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* === ESTADOS === */
+/* === ESTADOS DE LOS RAMOS === */
 .ramo.bloqueado {
   opacity: 0.4;
   cursor: not-allowed;
@@ -77,7 +90,11 @@ h1 {
   text-decoration: line-through;
 }
 
-/* === COLORES POR CICLO === */
+.ramo.activo {
+  cursor: pointer;
+}
+
+/* === COLORES DE LOS RAMOS POR CICLO === */
 .ramo.basico {
   border-color: #006957;
   background-color: #E8EDEB;
@@ -96,7 +113,7 @@ h1 {
   color: #6FB065;
 }
 
-/* === SCROLL Y RESPONSIVE === */
+/* === RESPONSIVE === */
 @media (max-width: 1200px) {
   .linea-tiempo {
     overflow-x: auto;
@@ -105,15 +122,4 @@ h1 {
   .semestre {
     min-width: 220px;
   }
-}
-.semestre.basico {
-  background-color: #E8EDEB;
-}
-
-.semestre.intermedio {
-  background-color: #EEF7FD;
-}
-
-.semestre.avanzado {
-  background-color: #ECF3E9;
 }
