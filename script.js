@@ -234,12 +234,57 @@ const ramos = {
   },
 
   // Semestre 10
-  "Pediatría II": { ciclo: "intermedio", semestre: 10, requisitos: ["Pediatría I"] },
-  "Ginecología y Obstetricia II": { ciclo: "intermedio", semestre: 10, requisitos: ["Ginecología y Obstetricia I"] },
-  "Especialidades II": { ciclo: "intermedio", semestre: 10, requisitos: ["Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"] },
-  "Medicina de Urgencia y Trauma": { ciclo: "intermedio", semestre: 10, requisitos: ["Pediatría I", "Ginecología y Obstetricia I", "Cuidados Paliativos y del Fin de la Vida"] },
-  "Razonamiento Médico - Clínico III": { ciclo: "intermedio", semestre: 10, requisitos: ["Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"] },
-
+  "Pediatría II": {
+  ciclo: "intermedio",
+  semestre: 10,
+  requisitos: ["Pediatría I"],
+  abre: [
+    "Internado de Medicina Interna",
+    "Internado de Pediatría"
+  ]
+},
+"Ginecología y Obstetricia II": {
+  ciclo: "intermedio",
+  semestre: 10,
+  requisitos: ["Ginecología y Obstetricia I"],
+  abre: [
+    "Internado de Medicina Interna"
+  ]
+},
+"Especialidades II": {
+  ciclo: "intermedio",
+  semestre: 10,
+  requisitos: [
+    "Medicina Familiar y Comunitaria",
+    "Cuidados Paliativos y del Fin de la Vida"
+  ],
+  abre: [
+    "Internado de Medicina Interna"
+  ]
+},
+"Medicina de Urgencia y Trauma": {
+  ciclo: "intermedio",
+  semestre: 10,
+  requisitos: [
+    "Pediatría I",
+    "Ginecología y Obstetricia I",
+    "Cuidados Paliativos y del Fin de la Vida"
+  ],
+  abre: [
+    "Internado de Medicina Interna"
+  ]
+},
+"Razonamiento Médico - Clínico III": {
+  ciclo: "intermedio",
+  semestre: 10,
+  requisitos: [
+    "Medicina Familiar y Comunitaria",
+    "Cuidados Paliativos y del Fin de la Vida"
+  ],
+  abre: [
+    "Internado de Medicina Interna"
+  ]
+}
   // === CICLO AVANZADO ===
   // Semestre 11
 "Internado de Medicina Interna": {
