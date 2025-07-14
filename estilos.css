@@ -20,25 +20,27 @@ h1 {
   padding-left: 10px;
 }
 
-/* === CONTENEDOR DE SEMESTRES POR CICLO === */
+/* === CONTENEDOR DE SEMESTRES DE UN CICLO === */
 .ciclo-grid {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  padding-bottom: 10px;
-  margin-bottom: 50px;
+  padding: 10px 0 30px;
+  margin-bottom: 60px;
+  border-bottom: 2px dashed #ccc;
 }
 
 /* === CAJA DE SEMESTRE === */
 .semestre {
   background-color: #f5f5f5;
   border-radius: 8px;
-  padding: 10px;
-  min-width: 200px;
+  padding: 12px;
+  min-width: 220px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.08);
 }
 
 .semestre h3 {
@@ -92,13 +94,14 @@ h1 {
   color: #6FB065;
 }
 
-/* === RESPONSIVE: Scroll horizontal en pantallas chicas === */
+/* === RESPONSIVE === */
 @media (max-width: 1200px) {
   .ciclo-grid {
+    flex-wrap: nowrap;
     overflow-x: auto;
   }
 
   .semestre {
-    min-width: 220px;
+    min-width: 240px;
   }
 }
