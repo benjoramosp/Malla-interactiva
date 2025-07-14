@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Interactiva Medicina USS</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>Malla Interactiva Medicina USS</h1>
+  <div id="malla">
 
+    <!-- CICLO BÁSICO -->
+    <h2>Ciclo Básico</h2>
+
+    <div class="semestre" id="semestre1">
+      <div class="ramo basico" data-id="biocel">Biología Celular</div>
+      <div class="ramo basico" data-id="quimg">Química General y Orgánica</div>
+      <div class="ramo basico" data-id="fisicomat">Bases Físico - Matemáticas de la Medicina</div>
+      <div class="ramo basico" data-id="fundamed">Bases y Fundamentos de la Medicina</div>
+      <div class="ramo basico" data-id="estrategias">Estrategias para el Aprendizaje</div>
+      <div class="ramo basico" data-id="abp1">Integración ABP I</div>
+    </div>
+
+    <div class="semestre" id="semestre2">
+      <div class="ramo basico" data-id="biomol" data-req="biocel">Biología Molecular y Genética</div>
+      <div class="ramo basico" data-id="bioq" data-req="biocel,quimg">Bioquímica General</div>
+      <div class="ramo basico" data-id="svital" data-req="biocel">Soporte Básico Vital, Primeros Auxilios y Principios de Enfermería</div>
+      <div class="ramo basico" data-id="histmed" data-req="fundamed">Historia de la Medicina Universal y Chilena</div>
+      <div class="ramo basico" data-id="morf1" data-req="abp1">Morfología Integrada y Orientada a la Práctica Médica I</div>
+      <div class="ramo basico" data-id="abp2">Integración ABP II</div>
+      <div class="ramo basico" data-id="antro">Antropología</div>
+    </div>
+
+    <div class="semestre" id="semestre3">
+      <div class="ramo basico" data-id="bioestad">Bioestadística y Principios de Medicina Basada en la Evidencia</div>
+      <div class="ramo basico" data-id="micro" data-req="biomol,svital">Microbiología Médica</div>
+      <div class="ramo basico" data-id="fisio" data-req="bioq,biomol,morf1">Fisiología Médica</div>
+      <div class="ramo basico" data-id="psico" data-req="histmed">Psicología Aplicada a la Medicina General y al Médico</div>
+      <div class="ramo basico" data-id="morf2" data-req="morf1">Morfología Integrada y Orientada a la Práctica Médica II</div>
+      <div class="ramo basico" data-id="etica" data-req="antro">Ética</div>
+    </div>
+
+    <div class="semestre" id="semestre4">
+      <div class="ramo basico" data-id="fispat" data-req="fisio">Fisiopatología Médica</div>
+      <div class="ramo basico" data-id="saludpob" data-req="bioestad">Salud Poblacional</div>
+      <div class="ramo basico" data-id="morf3" data-req="morf2">Morfología Integrada y Orientada a la Práctica Médica III</div>
+      <div class="ramo basico" data-id="rmc1" data-req="fisio,morf2">Razonamiento Médico - Clínico I</div>
+      <div class="ramo basico" data-id="efi1" data-req="etica">Electivo de Formación Integral I</div>
+    </div>
+
+    <!-- CICLO INTERMEDIO -->
+    <h2>Ciclo Intermedio</h2>
+
+    <div class="semestre" id="semestre5">
+      <div class="ramo intermedio" data-id="semio1" data-req="fispat,morf3,rmc1">Semiología I</div>
+      <div class="ramo intermedio" data-id="patomed" data-req="fispat,morf3">Patología Médica</div>
+      <div class="ramo intermedio" data-id="epidemio" data-req="saludpob">Epidemiología</div>
+      <div class="ramo intermedio" data-id="bioetica" data-req="rmc1">Bioética</div>
+      <div class="ramo intermedio" data-id="efi2">Electivo de Formación Integral II</div>
+      <div class="ramo intermedio" data-id="efi3">Electivo de Formación Integral III</div>
+    </div>
+
+    <div class="semestre" id="semestre6">
+      <div class="ramo intermedio" data-id="semio2" data-req="semio1,patomed">Semiología II</div>
+      <div class="ramo intermedio" data-id="farmaco" data-req="patomed">Farmacología General</div>
+      <div class="ramo intermedio" data-id="metodo" data-req="bioestad">Metodología de la Investigación</div>
+      <div class="ramo intermedio" data-id="saluddigital" data-req="semio1">Salud Digital</div>
+      <div class="ramo intermedio" data-id="rmc2" data-req="semio1,patomed">Razonamiento Médico - Clínico II</div>
+      <div class="ramo intermedio" data-id="efi4">Electivo de Formación Integral IV</div>
+    </div>
+
+    <div class="semestre" id="semestre7">
+      <div class="ramo intermedio" data-id="medint1" data-req="micro,semio2,rmc2">Medicina Interna I</div>
+      <div class="ramo intermedio" data-id="cir1" data-req="micro,semio2,rmc2">Cirugía I</div>
+      <div class="ramo intermedio" data-id="psiq1" data-req="micro,semio2,rmc2">Psiquiatría I</div>
+      <div class="ramo intermedio" data-id="pueblos" data-req="rmc2">Salud Pueblos Originarios y Migrantes</div>
+    </div>
+
+    <div class="semestre" id="semestre8">
+      <div class="ramo intermedio" data-id="medint2" data-req="medint1">Medicina Interna II</div>
+      <div class="ramo intermedio" data-id="cir2" data-req="cir1">Cirugía II</div>
+      <div class="ramo intermedio" data-id="psiq2" data-req="psiq1">Psiquiatría II</div>
+      <div class="ramo intermedio" data-id="legal" data-req="pueblos">Medicina Legal, Responsabilidad Médica y Obligaciones Profesionales</div>
+    </div>
+
+    <div class="semestre" id="semestre9">
+      <div class="ramo intermedio" data-id="pedia1" data-req="medint2,psiq2,legal">Pediatría I</div>
+      <div class="ramo intermedio" data-id="gine1" data-req="medint2,cir2,legal">Ginecología y Obstetricia I</div>
+      <div class="ramo intermedio" data-id="esp1" data-req="medint2">Especialidades I</div>
+      <div class="ramo intermedio" data-id="famcom" data-req="medint2">Medicina Familiar y Comunitaria</div>
+      <div class="ramo intermedio" data-id="cpfv" data-req="medint2,cir2,psiq2,legal">Cuidados Paliativos y del Fin de la Vida</div>
+      <div class="ramo intermedio" data-id="spamed" data-req="legal">Salud Poblacional Aplicada a la Medicina</div>
+    </div>
+
+    <div class="semestre" id="semestre10">
+      <div class="ramo intermedio" data-id="pedia2" data-req="pedia1">Pediatría II</div>
+      <div class="ramo intermedio" data-id="gine2" data-req="gine1">Ginecología y Obstetricia II</div>
+      <div class="ramo intermedio" data-id="esp2" data-req="cpfv,famcom">Especialidades II</div>
+      <div class="ramo intermedio" data-id="urgencia" data-req="pedia1,gine1,cpfv">Medicina de Urgencia y Trauma</div>
+      <div class="ramo intermedio" data-id="rmc3" data-req="cpfv,famcom">Razonamiento Médico - Clínico III</div>
+    </div>
+
+<!-- CICLO AVANZADO -->
+<h2>Ciclo Avanzado</h2>
+
+    <div class="semestre" id="semestre11">
+      <div class="ramo avanzado" data-id="intmed" data-req="pedia2,gine2,esp2,urgencia,rmc3">Internado de Medicina Interna</div>
+      <div class="ramo avanzado" data-id="intpedia" data-req="pedia2">Internado de Pediatría</div>
+    </div>
+
+    <div class="semestre" id="semestre12">
+      <div class="ramo avanzado" data-id="intsalud" data-req="intmed">Internado de Salud Mental</div>
+      <div class="ramo avanzado" data-id="intfam" data-req="intpedia">Internado de Medicina Familiar</div>
+      <div class="ramo avanzado" data-id="int1">Internado Electivo I</div>
+    </div>
+
+    <div class="semestre" id="semestre13">
+      <div class="ramo avanzado" data-id="intesp" data-req="intmed,intsalud">Internado de Especialidades de la Medicina Interna</div>
+      <div class="ramo avanzado" data-id="intcir" data-req="intmed">Internado de Cirugía y Urología</div>
+      <div class="ramo avanzado" data-id="int2" data-req="intpedia,intfam">Internado Electivo II</div>
+    </div>
+
+    <div class="semestre" id="semestre14">
+      <div class="ramo avanzado" data-id="intgine" data-req="intesp,intcir">Internado de Ginecología y Obstetricia</div>
+      <div class="ramo avanzado" data-id="inturg" data-req="intmed,intfam,intpedia,intesp,intcir">Internado de Medicina de Urgencia y Traumatología</div>
+      <div class="ramo avanzado" data-id="rmc4" data-req="intesp,intcir">Razonamiento Médico - Clínico IV</div>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
