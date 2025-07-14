@@ -285,21 +285,23 @@ const ramos = {
     ciclo: "avanzado", semestre: 13 
   },
 
-  // Semestre 14
-  "Internado de Ginecología y Obstetricia": { 
-    ciclo: "avanzado", semestre: 14
-    requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
-  },
-  "Internado de Medicina de Urgencia y Traumatología": { 
-    ciclo: "avanzado", semestre: 14
-    requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
-  },
-  "Razonamiento Médico - Clínico IV": { 
-    ciclo: "avanzado", semestre: 14
-    requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
-  }
-});
+// Semestre 14
+"Internado de Ginecología y Obstetricia": { 
+  ciclo: "avanzado", semestre: 14,
+  requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
+},
+"Internado de Medicina de Urgencia y Traumatología": { 
+  ciclo: "avanzado", semestre: 14,
+  requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
+},
+"Razonamiento Médico - Clínico IV": { 
+  ciclo: "avanzado", semestre: 14,
+  requisitos: ["Internado de Especialidades de la Medicina Interna", "Internado de Cirugía y Urología", "Internado Electivo II"]
+}
+};
 
+
+// === CREAR LOS 14 SEMESTRES EN ORDEN HORIZONTAL ===
 function crearSemestres() {
   const lineaTiempo = document.querySelector(".linea-tiempo");
   for (let i = 1; i <= 14; i++) {
@@ -312,6 +314,7 @@ function crearSemestres() {
   }
 }
 
+// === CREAR UN RAMO EN SU SEMESTRE CORRESPONDIENTE ===
 function crearRamo(nombre, data) {
   const div = document.createElement("div");
   div.classList.add("ramo", "bloqueado", data.ciclo);
@@ -323,6 +326,7 @@ function crearRamo(nombre, data) {
   divSemestre.appendChild(div);
 }
 
+// === DESBLOQUEA UN RAMO SI SE CUMPLEN LOS REQUISITOS ===
 function desbloquear(nombre) {
   const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
   if (!ramo || !ramo.classList.contains("bloqueado")) return;
@@ -339,8 +343,11 @@ function desbloquear(nombre) {
   }
 }
 
+// === CAMBIA ESTADO A "APROBADO" Y DESBLOQUEA LOS SIGUIENTES ===
 function aprobar(nombre) {
   const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
+  if (!ramo) return;
+
   ramo.classList.add("aprobado");
   ramo.removeEventListener("click", () => aprobar(nombre));
   ramo.dataset.estado = "aprobado";
@@ -349,6 +356,7 @@ function aprobar(nombre) {
   abre.forEach(desbloquear);
 }
 
+// === INICIALIZA TODO ===
 function inicializarMalla() {
   crearSemestres();
   for (const [nombre, data] of Object.entries(ramos)) {
