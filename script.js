@@ -99,7 +99,7 @@ const ramos = {
 
 const container = document.getElementById("malla-container");
 
-// Crear visualmente un ramo
+// Crea un ramo y lo inserta en su semestre
 function crearRamo(nombre, data) {
   const div = document.createElement("div");
   div.classList.add("ramo", "bloqueado", data.ciclo);
@@ -107,31 +107,31 @@ function crearRamo(nombre, data) {
   div.dataset.nombre = nombre;
   div.dataset.estado = "bloqueado";
 
-  const semestreContenedor = container.querySelector(`.semestre-${data.semestre}.${data.ciclo}`);
-  if (semestreContenedor) {
-    semestreContenedor.appendChild(div);
+  const contenedor = container.querySelector(`.semestre-${data.semestre}.${data.ciclo}`);
+  if (contenedor) {
+    contenedor.appendChild(div);
   }
 }
 
-// Verifica requisitos y desbloquea si están cumplidos
+// Desbloquea un ramo si todos sus requisitos están aprobados
 function desbloquear(nombre) {
   const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
-  if (ramo && ramo.dataset.estado === "bloqueado") {
-    const requisitos = ramos[nombre].requisitos || [];
-    const todosAprobados = requisitos.every(req => {
-      const reqRamo = document.querySelector(`.ramo[data-nombre="${req}"]`);
-      return reqRamo?.dataset.estado === "aprobado";
-    });
+  if (!ramo || ramo.dataset.estado !== "bloqueado") return;
 
-    if (todosAprobados) {
-      ramo.classList.remove("bloqueado");
-      ramo.dataset.estado = "activo";
-      ramo.addEventListener("click", () => aprobar(nombre));
-    }
+  const requisitos = ramos[nombre].requisitos || [];
+  const todosAprobados = requisitos.every(req => {
+    const reqRamo = document.querySelector(`.ramo[data-nombre="${req}"]`);
+    return reqRamo?.dataset.estado === "aprobado";
+  });
+
+  if (todosAprobados) {
+    ramo.classList.remove("bloqueado");
+    ramo.dataset.estado = "activo";
+    ramo.addEventListener("click", () => aprobar(nombre));
   }
 }
 
-// Marca ramo como aprobado y desbloquea los que dependen de él
+// Aprueba un ramo y desbloquea los que dependen de él
 function aprobar(nombre) {
   const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
   if (!ramo || ramo.dataset.estado === "aprobado") return;
@@ -144,25 +144,31 @@ function aprobar(nombre) {
   abre.forEach(desbloquear);
 }
 
-// Inicializa toda la estructura visual
+// Inicializa la malla con estructura correcta por ciclo y semestre
 function inicializarMalla() {
-  const ciclos = ["basico", "intermedio", "avanzado"];
+  const ciclos = [
+    { nombre: "basico", semestres: 4 },
+    { nombre: "intermedio", semestres: 6 },
+    { nombre: "avanzado", semestres: 4 }
+  ];
 
   ciclos.forEach(ciclo => {
     const divCiclo = document.createElement("div");
-    divCiclo.classList.add("ciclo", ciclo);
+    divCiclo.classList.add("ciclo", ciclo.nombre);
 
     const titulo = document.createElement("h2");
-    titulo.textContent = `Ciclo ${ciclo.charAt(0).toUpperCase() + ciclo.slice(1)}`;
+    titulo.textContent = `Ciclo ${ciclo.nombre.charAt(0).toUpperCase() + ciclo.nombre.slice(1)}`;
     divCiclo.appendChild(titulo);
 
-    // 🔧 Aquí se generan los 14 semestres con sus títulos y contenedores
-    for (let semestre = 1; semestre <= 14; semestre++) {
+    for (let i = 1; i <= ciclo.semestres; i++) {
+      const numeroSemestre = ciclo.nombre === "basico" ? i :
+                             ciclo.nombre === "intermedio" ? i + 4 : i + 10;
+
       const divSemestre = document.createElement("div");
-      divSemestre.classList.add("semestre", `semestre-${semestre}`, ciclo);
+      divSemestre.classList.add("semestre", `semestre-${numeroSemestre}`, ciclo.nombre);
 
       const h3 = document.createElement("h3");
-      h3.textContent = `Semestre ${semestre}`;
+      h3.textContent = `Semestre ${numeroSemestre}`;
       divSemestre.appendChild(h3);
 
       divCiclo.appendChild(divSemestre);
@@ -171,15 +177,14 @@ function inicializarMalla() {
     container.appendChild(divCiclo);
   });
 
-  // Crea todos los ramos y los ubica en sus semestres
+  // Crear ramos
   for (const [nombre, data] of Object.entries(ramos)) {
     crearRamo(nombre, data);
   }
 
-  // Desbloquea ramos sin requisitos
+  // Desbloquear los que no tienen requisitos
   for (const nombre in ramos) {
-    const requisitos = ramos[nombre].requisitos;
-    if (!requisitos || requisitos.length === 0) {
+    if (!ramos[nombre].requisitos || ramos[nombre].requisitos.length === 0) {
       desbloquear(nombre);
     }
   }
