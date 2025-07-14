@@ -1,4 +1,4 @@
-body {
+bbody {
   font-family: Arial, sans-serif;
   background-color: #fdfdfd;
   margin: 0;
@@ -11,17 +11,8 @@ h1 {
   margin-bottom: 40px;
 }
 
-/* === TÍTULO DE CADA CICLO === */
-.ciclo-titulo {
-  margin: 40px 0 10px;
-  font-size: 1.4rem;
-  color: #444;
-  border-left: 6px solid #aaa;
-  padding-left: 10px;
-}
-
-/* === CONTENEDOR DE SEMESTRES DE UN CICLO === */
-.ciclo-grid {
+/* CONTENEDOR DE TODOS LOS SEMESTRES */
+.linea-tiempo {
   display: flex;
   gap: 16px;
   overflow-x: auto;
@@ -30,7 +21,7 @@ h1 {
   border-bottom: 2px dashed #ccc;
 }
 
-/* === CAJA DE SEMESTRE === */
+/* SEMESTRE INDIVIDUAL */
 .semestre {
   background-color: #f5f5f5;
   border-radius: 8px;
@@ -51,7 +42,7 @@ h1 {
   padding-bottom: 4px;
 }
 
-/* === ESTILO DE CADA RAMO === */
+/* RAMO */
 .ramo {
   padding: 8px;
   border-radius: 6px;
@@ -63,7 +54,7 @@ h1 {
   transition: all 0.2s;
 }
 
-/* === ESTADOS DE RAMOS === */
+/* ESTADOS */
 .ramo.bloqueado {
   opacity: 0.4;
   pointer-events: none;
@@ -75,33 +66,21 @@ h1 {
   text-decoration: line-through;
 }
 
-/* === COLORES POR CICLO === */
-.basico .ramo {
+/* COLORES POR CICLO */
+.ramo.basico {
   border: 2px solid #006957;
   background-color: #E8EDEB;
   color: #006957;
 }
 
-.intermedio .ramo {
+.ramo.intermedio {
   border: 2px solid #00A9DC;
   background-color: #EEF7FD;
   color: #00A9DC;
 }
 
-.avanzado .ramo {
+.ramo.avanzado {
   border: 2px solid #6FB065;
   background-color: #ECF3E9;
   color: #6FB065;
-}
-
-/* === RESPONSIVE === */
-@media (max-width: 1200px) {
-  .ciclo-grid {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-  }
-
-  .semestre {
-    min-width: 240px;
-  }
 }
