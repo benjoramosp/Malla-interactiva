@@ -257,8 +257,8 @@ const ramos = {
   "Razonamiento Médico - Clínico III": {
     ciclo: "intermedio", semestre: 10,
     requisitos: ["Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"]
-  }
-});
+  },
+  
   // Semestre 11
   "Internado de Medicina Interna": {
     ciclo: "avanzado", semestre: 11,
