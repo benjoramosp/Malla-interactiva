@@ -8,51 +8,61 @@ body {
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  color: #222;
 }
 
-/* === CONTENEDOR DE TODA LA MALLA === */
+/* === CONTENEDOR DE LA LÍNEA DE TIEMPO === */
 .linea-tiempo {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   overflow-x: auto;
-  padding: 10px;
+  padding: 10px 0;
+  scroll-behavior: smooth;
 }
 
-/* === CADA SEMESTRE COMO COLUMNA === */
+/* === CADA SEMESTRE === */
 .semestre {
-  flex: 0 0 230px;
+  flex: 0 0 260px;
   display: flex;
   flex-direction: column;
-  background-color: #f2f2f2;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 0 3px rgba(0,0,0,0.2);
-  min-height: 300px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  min-height: 350px;
+  transition: transform 0.3s ease;
+}
+
+.semestre:hover {
+  transform: scale(1.01);
 }
 
 /* === TÍTULO DEL SEMESTRE === */
 .semestre h3 {
   text-align: center;
-  font-size: 1rem;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #aaa;
-  padding-bottom: 5px;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+  color: #444;
 }
 
 /* === ESTILO GENERAL DE RAMOS === */
 .ramo {
-  background-color: #ffffff;
+  background-color: #fff;
   border: 2px solid transparent;
-  padding: 8px;
+  padding: 10px;
   margin-bottom: 8px;
   border-radius: 6px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
   user-select: none;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 /* === ESTADOS === */
@@ -86,13 +96,13 @@ h1 {
   color: #6FB065;
 }
 
-/* === SCROLL HORIZONTAL PARA PANTALLAS PEQUEÑAS === */
+/* === SCROLL Y RESPONSIVE === */
 @media (max-width: 1200px) {
   .linea-tiempo {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 
   .semestre {
-    min-width: 200px;
+    min-width: 220px;
   }
 }
