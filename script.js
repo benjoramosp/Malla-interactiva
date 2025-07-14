@@ -356,7 +356,6 @@ function aprobar(nombre) {
   abre.forEach(desbloquear);
 }
 
-// === INICIALIZA TODO ===
 function inicializarMalla() {
   crearSemestres();
   for (const [nombre, data] of Object.entries(ramos)) {
@@ -366,6 +365,10 @@ function inicializarMalla() {
     if (!ramos[nombre].requisitos) {
       desbloquear(nombre);
     }
+  }
+  // <-- Agrega esto para evaluar desbloqueo de todos los ramos al cargar
+  for (const nombre in ramos) {
+    desbloquear(nombre);
   }
 }
 
