@@ -104,7 +104,6 @@ const ciclos = {
   avanzado: 4
 };
 
-// === FUNCIÓN PARA CREAR SEMESTRES CORRECTAMENTE POR CICLO ===
 function crearSemestres() {
   for (const [ciclo, cantidadSemestres] of Object.entries(ciclos)) {
     const contenedor = document.querySelector(`.ciclo-grid.${ciclo}`);
@@ -119,7 +118,6 @@ function crearSemestres() {
   }
 }
 
-// === FUNCIÓN PARA CREAR RAMOS ===
 function crearRamo(nombre, data) {
   const div = document.createElement("div");
   div.classList.add("ramo", "bloqueado", data.ciclo);
@@ -134,7 +132,6 @@ function crearRamo(nombre, data) {
   divSemestre.appendChild(div);
 }
 
-// === FUNCIÓN PARA DESBLOQUEAR RAMO ===
 function desbloquear(nombre) {
   const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
   if (!ramo || !ramo.classList.contains("bloqueado")) return;
@@ -151,7 +148,6 @@ function desbloquear(nombre) {
   }
 }
 
-// === FUNCIÓN PARA MARCAR COMO APROBADO ===
 function aprobar(nombre) {
   const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
   ramo.classList.add("aprobado");
@@ -162,7 +158,6 @@ function aprobar(nombre) {
   abre.forEach(desbloquear);
 }
 
-// === FUNCIÓN PRINCIPAL ===
 function inicializarMalla() {
   crearSemestres();
   for (const [nombre, data] of Object.entries(ramos)) {
