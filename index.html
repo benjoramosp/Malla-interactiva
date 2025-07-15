@@ -10,16 +10,8 @@
   <h1>Malla Interactiva Medicina USS</h1>
   <div class="linea-tiempo"></div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const contenedor = document.querySelector('.linea-tiempo');
-      contenedor.innerHTML = `
-        <div class="semestre basico">
-          <h3>Semestre 1</h3>
-          <div class="ramo basico">Biología Celular</div>
-        </div>
-      `;
-    });
-  </script>
+  <!-- IMPORTANTE: Cargar primero ramos.js -->
+  <script src="ramos.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
