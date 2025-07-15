@@ -1,5 +1,3 @@
-// script.js
-
 const ramos = {
   // === CICLO BÁSICO ===
   "Biología Celular": { ciclo: "basico", semestre: 1, abre: ["Biología Molecular y Genética", "Bioquímica General", "Soporte Básico Vital, Primeros Auxilios y Principios de Enfermería"] },
