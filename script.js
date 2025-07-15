@@ -111,156 +111,7 @@ const ramos = {
     requisitos: ["Ética"]
   },
 
-  // === CICLO INTERMEDIO ===
-  // Semestre 5
-  "Semiología I": {
-    ciclo: "intermedio", semestre: 5,
-    requisitos: ["Fisiopatología Médica", "Morfología Integrada y Orientada a la Práctica Médica III", "Razonamiento Médico - Clínico I"],
-    abre: ["Semiología II", "Razonamiento Médico - Clínico II", "Salud Digital"]
-  },
-  "Patología Médica": {
-    ciclo: "intermedio", semestre: 5,
-    requisitos: ["Microbiología Médica", "Fisiopatología Médica", "Morfología Integrada y Orientada a la Práctica Médica III"],
-    abre: ["Semiología II", "Razonamiento Médico - Clínico II", "Farmacología General"]
-  },
-  "Epidemiología": {
-    ciclo: "intermedio", semestre: 5,
-    requisitos: ["Salud Poblacional"]
-  },
-  "Bioética": {
-    ciclo: "intermedio", semestre: 5,
-    requisitos: ["Razonamiento Médico - Clínico I"]
-  },
-  "Electivo de Formación Integral II": { ciclo: "intermedio", semestre: 5 },
-  "Electivo de Formación Integral III": { ciclo: "intermedio", semestre: 5 },
-
-  // Semestre 6
-  "Semiología II": {
-    ciclo: "intermedio", semestre: 6,
-    requisitos: ["Semiología I", "Patología Médica"],
-    abre: ["Medicina Interna I", "Cirugía I", "Psiquiatría I"]
-  },
-  "Farmacología General": {
-    ciclo: "intermedio", semestre: 6,
-    requisitos: ["Patología Médica"]
-  },
-  "Metodología de la Investigación": {
-    ciclo: "intermedio", semestre: 6,
-    requisitos: ["Bioestadística y Principios de Medicina Basada en la Evidencia"]
-  },
-  "Salud Digital": {
-    ciclo: "intermedio", semestre: 6,
-    requisitos: ["Semiología I"]
-  },
-  "Razonamiento Médico - Clínico II": {
-    ciclo: "intermedio", semestre: 6,
-    requisitos: ["Semiología I", "Patología Médica", "Razonamiento Médico - Clínico I"],
-    abre: ["Medicina Interna I", "Cirugía I", "Psiquiatría I", "Salud Pueblos Originarios y Migrantes"]
-  },
-  "Electivo de Formación Integral IV": { ciclo: "intermedio", semestre: 6 },
-
-  // Semestre 7
-  "Medicina Interna I": {
-    ciclo: "intermedio", semestre: 7,
-    requisitos: ["Microbiología Médica", "Semiología II", "Razonamiento Médico - Clínico II"],
-    abre: ["Medicina Interna II"]
-  },
-  "Cirugía I": {
-    ciclo: "intermedio", semestre: 7,
-    requisitos: ["Microbiología Médica", "Semiología II", "Razonamiento Médico - Clínico II"],
-    abre: ["Cirugía II"]
-  },
-  "Psiquiatría I": {
-    ciclo: "intermedio", semestre: 7,
-    requisitos: ["Microbiología Médica", "Semiología II", "Razonamiento Médico - Clínico II"],
-    abre: ["Psiquiatría II"]
-  },
-  "Salud Pueblos Originarios y Migrantes": {
-    ciclo: "intermedio", semestre: 7,
-    requisitos: ["Razonamiento Médico - Clínico II"],
-    abre: ["Medicina Legal, Responsabilidad Médica y Obligaciones Profesionales"]
-  },
-
-  // Semestre 8
-  "Medicina Interna II": {
-    ciclo: "intermedio", semestre: 8,
-    requisitos: ["Medicina Interna I"],
-    abre: ["Pediatría I", "Ginecología y Obstetricia I", "Especialidades I", "Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"]
-  },
-  "Cirugía II": {
-    ciclo: "intermedio", semestre: 8,
-    requisitos: ["Cirugía I"],
-    abre: ["Ginecología y Obstetricia I", "Cuidados Paliativos y del Fin de la Vida"]
-  },
-  "Psiquiatría II": {
-    ciclo: "intermedio", semestre: 8,
-    requisitos: ["Psiquiatría I"],
-    abre: ["Pediatría I", "Cuidados Paliativos y del Fin de la Vida"]
-  },
-  "Medicina Legal, Responsabilidad Médica y Obligaciones Profesionales": {
-    ciclo: "intermedio", semestre: 8,
-    requisitos: ["Salud Pueblos Originarios y Migrantes"],
-    abre: ["Pediatría I", "Ginecología y Obstetricia I", "Cuidados Paliativos y del Fin de la Vida", "Salud Poblacional Aplicada a la Medicina"]
-  },
-
-  // Semestre 9
-  "Pediatría I": {
-    ciclo: "intermedio", semestre: 9,
-    requisitos: ["Medicina Interna II", "Psiquiatría II", "Medicina Legal, Responsabilidad Médica y Obligaciones Profesionales"],
-    abre: ["Pediatría II", "Medicina de Urgencia y Trauma"]
-  },
-  "Ginecología y Obstetricia I": {
-    ciclo: "intermedio", semestre: 9,
-    requisitos: ["Medicina Interna II", "Cirugía II", "Medicina Legal, Responsabilidad Médica y Obligaciones Profesionales"],
-    abre: ["Ginecología y Obstetricia II", "Medicina de Urgencia y Trauma"]
-  },
-  "Especialidades I": {
-    ciclo: "intermedio", semestre: 9,
-    requisitos: ["Medicina Interna II"]
-  },
-  "Medicina Familiar y Comunitaria": {
-    ciclo: "intermedio", semestre: 9,
-    requisitos: ["Medicina Interna II"],
-    abre: ["Especialidades II", "Razonamiento Médico - Clínico III"]
-  },
-  "Cuidados Paliativos y del Fin de la Vida": {
-    ciclo: "intermedio", semestre: 9,
-    requisitos: ["Medicina Interna II", "Cirugía II", "Psiquiatría II", "Medicina Legal, Responsabilidad Médica y Obligaciones Profesionales"],
-    abre: ["Especialidades II", "Razonamiento Médico - Clínico III", "Medicina de Urgencia y Trauma"]
-  },
-  "Salud Poblacional Aplicada a la Medicina": {
-    ciclo: "intermedio", semestre: 9,
-    requisitos: ["Medicina Legal, Responsabilidad Médica y Obligaciones Profesionales"]
-  },
-
-  // Semestre 10
-  "Pediatría II": {
-    ciclo: "intermedio", semestre: 10,
-    requisitos: ["Pediatría I"],
-    abre: ["Internado de Medicina Interna", "Internado de Pediatría"]
-  },
-  "Ginecología y Obstetricia II": {
-    ciclo: "intermedio", semestre: 10,
-    requisitos: ["Ginecología y Obstetricia I"],
-    abre: ["Internado de Medicina Interna"]
-  },
-  "Especialidades II": {
-    ciclo: "intermedio", semestre: 10,
-    requisitos: ["Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"],
-    abre: ["Internado de Medicina Interna"]
-  },
-  "Medicina de Urgencia y Trauma": {
-    ciclo: "intermedio", semestre: 10,
-    requisitos: ["Pediatría I", "Ginecología y Obstetricia I", "Cuidados Paliativos y del Fin de la Vida"],
-    abre: ["Internado de Medicina Interna"]
-  },
-  "Razonamiento Médico - Clínico III": {
-    ciclo: "intermedio", semestre: 10,
-    requisitos: ["Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"],
-    abre: ["Internado de Medicina Interna"]
-  },
-
-// === CICLO AVANZADO ===
+  // === CICLO AVANZADO ===
 
 // Semestre 11
 "Internado de Medicina Interna": {
@@ -275,7 +126,9 @@ const ramos = {
   abre: [
     "Internado de Salud Mental",
     "Internado de Medicina Familiar",
-    "Internado Electivo I"
+    "Internado Electivo I",
+    "Internado de Especialidades de la Medicina Interna",
+    "Internado de Cirugía y Urología"
   ]
 },
 "Internado de Pediatría": {
@@ -291,35 +144,58 @@ const ramos = {
 // Semestre 12
 "Internado de Salud Mental": {
   ciclo: "avanzado", semestre: 12,
-  requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"],
+  requisitos: [
+    "Internado de Medicina Interna",
+    "Internado de Pediatría"
+  ],
   abre: ["Internado de Especialidades de la Medicina Interna"]
 },
 "Internado de Medicina Familiar": {
   ciclo: "avanzado", semestre: 12,
-  requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"],
+  requisitos: [
+    "Internado de Medicina Interna",
+    "Internado de Pediatría"
+  ],
   abre: ["Internado Electivo II"]
 },
 "Internado Electivo I": {
   ciclo: "avanzado", semestre: 12,
-  requisitos: ["Internado de Pediatría", "Internado de Medicina Interna"],
-  abre: [] // No abre nada directamente, pero sirve como requisito cumplido
+  requisitos: [
+    "Internado de Medicina Interna",
+    "Internado de Pediatría"
+  ]
 },
 
 // Semestre 13
 "Internado de Especialidades de la Medicina Interna": {
   ciclo: "avanzado", semestre: 13,
-  requisitos: ["Internado de Medicina Interna", "Internado de Salud Mental"],
-  abre: ["Internado de Ginecología y Obstetricia", "Razonamiento Médico - Clínico IV"]
+  requisitos: [
+    "Internado de Medicina Interna",
+    "Internado de Salud Mental"
+  ],
+  abre: [
+    "Internado de Ginecología y Obstetricia",
+    "Internado de Medicina de Urgencia y Traumatología",
+    "Razonamiento Médico - Clínico IV"
+  ]
 },
 "Internado de Cirugía y Urología": {
   ciclo: "avanzado", semestre: 13,
   requisitos: ["Internado de Medicina Interna"],
-  abre: ["Internado de Ginecología y Obstetricia", "Razonamiento Médico - Clínico IV"]
+  abre: [
+    "Internado de Ginecología y Obstetricia",
+    "Internado de Medicina de Urgencia y Traumatología",
+    "Razonamiento Médico - Clínico IV"
+  ]
 },
 "Internado Electivo II": {
   ciclo: "avanzado", semestre: 13,
   requisitos: ["Internado de Medicina Familiar"],
-  abre: ["Internado de Ginecología y Obstetricia", "Razonamiento Médico - Clínico IV"]
+  abre: [
+    "Internado de Ginecología y Obstetricia",
+    "Internado de Medicina de Urgencia y Traumatología",
+    "Razonamiento Médico - Clínico IV"
+  ]
 },
 
 // Semestre 14
