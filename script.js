@@ -347,30 +347,28 @@ const ramos = {
     "Internado Electivo II"
   ]
 }
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   // === CREAR SEMESTRES (1 al 14) ===
-function crearSemestres() {
-  const contenedor = document.querySelector(".linea-tiempo");
-  for (let i = 1; i <= 14; i++) {
-    const columna = document.createElement("div");
-    columna.className = `semestre semestre-${i}`;
+  function crearSemestres() {
+    const contenedor = document.querySelector(".linea-tiempo");
+    for (let i = 1; i <= 14; i++) {
+      const columna = document.createElement("div");
+      columna.className = `semestre semestre-${i}`;
 
-    const titulo = document.createElement("h3");
-    titulo.textContent = `Semestre ${i}`;
-    columna.appendChild(titulo);
+      const titulo = document.createElement("h3");
+      titulo.textContent = `Semestre ${i}`;
+      columna.appendChild(titulo);
 
-    // Detectar ciclo
-    if (i >= 1 && i <= 4) columna.classList.add("basico");
-    else if (i >= 5 && i <= 10) columna.classList.add("intermedio");
-    else columna.classList.add("avanzado");
+      if (i >= 1 && i <= 4) columna.classList.add("basico");
+      else if (i >= 5 && i <= 10) columna.classList.add("intermedio");
+      else columna.classList.add("avanzado");
 
-    contenedor.appendChild(columna);
+      contenedor.appendChild(columna);
+    }
   }
-}
 
-  // === CREAR RAMO ===
+  // === CREAR UN RAMO ===
   function crearRamo(nombre, datos) {
     const div = document.createElement("div");
     div.className = `ramo bloqueado ${datos.ciclo}`;
@@ -387,14 +385,9 @@ function crearSemestres() {
     const ramo = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
     if (!ramo) return;
 
-    // Marcar como aprobado
     ramo.classList.remove("activo");
     ramo.classList.add("aprobado");
     ramo.dataset.estado = "aprobado";
-
-    // Remover cualquier evento anterior (clonando el nodo)
-    const nuevoRamo = ramo.cloneNode(true);
-    ramo.parentNode.replaceChild(nuevoRamo, ramo);
 
     // Desbloquear los ramos que este abre
     const abre = ramos[nombre].abre || [];
@@ -416,11 +409,13 @@ function crearSemestres() {
       ramo.classList.remove("bloqueado");
       ramo.classList.add("activo");
       ramo.dataset.estado = "activo";
+
+      // Solo se asigna el evento una vez
       ramo.addEventListener("click", () => aprobar(nombre));
     }
   }
 
-  // === INICIALIZAR MALLA ===
+  // === INICIALIZAR MALLA COMPLETA ===
   function inicializarMalla() {
     crearSemestres();
     for (const [nombre, datos] of Object.entries(ramos)) {
