@@ -261,7 +261,6 @@ const ramos = {
   },
 
   // === CICLO AVANZADO ===
- // === CICLO AVANZADO ===
 // Semestre 11
 "Internado de Medicina Interna": {
   ciclo: "avanzado", semestre: 11,
