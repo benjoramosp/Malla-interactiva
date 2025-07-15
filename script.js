@@ -66,7 +66,7 @@ const ramos = {
   "Razonamiento Médico - Clínico III": { ciclo: "intermedio", semestre: 10, requisitos: ["Medicina Familiar y Comunitaria", "Cuidados Paliativos y del Fin de la Vida"], abre: ["Internado de Medicina Interna"] },
 
   // === CICLO AVANZADO ===
-  "Internado de Medicina Interna": { ciclo: "avanzado", semestre: 11, requisitos: ["Pediatría II","Ginecología y Obstetricia II","Especialidades II","Medicina de Urgencia y Trauma","Razonamiento Médico - Clínico III"], abre: ["Internado de Salud Mental","Internado de Medicina Familiar","Internado Electivo I"] },
+  "Internado de Medicina Interna": { ciclo: "avanzado", semestre: 11, requisitos: ["Pediatría II","Ginecología y Obstetricia II","Especialidades II","Medicina de Urgencia y Trauma","Razonamiento Médico - Clínico III"], abre: ["Internado de Salud Mental","Internado de Medicina Familiar","Internado Electivo I", "Internado de Cirugía y Urología"] },
   "Internado de Pediatría": { ciclo: "avanzado", semestre: 11, requisitos: ["Pediatría II"], abre: ["Internado de Salud Mental","Internado de Medicina Familiar","Internado Electivo I"] },
   "Internado de Salud Mental": { ciclo: "avanzado", semestre: 12, requisitos: ["Internado de Pediatría","Internado de Medicina Interna"], abre: ["Internado de Especialidades de la Medicina Interna"] },
   "Internado de Medicina Familiar": { ciclo: "avanzado", semestre: 12, requisitos: ["Internado de Pediatría","Internado de Medicina Interna"], abre: ["Internado Electivo II"] },
