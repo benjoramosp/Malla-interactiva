@@ -5,99 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Interactiva Medicina USS</title>
   <link rel="stylesheet" href="estilos.css" />
-
-  <style>
-    /* Estilo mínimo de respaldo */
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 1rem;
-      background-color: #ffffff; /* Fondo blanco como pediste */
-      color: #333;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .linea-tiempo {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 1rem;
-      padding: 1rem;
-      overflow-x: auto;
-    }
-
-    .semestre {
-      min-width: 260px;
-      background: #ffffff;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 0.75rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      flex-shrink: 0;
-    }
-
-    .semestre h3 {
-      text-align: center;
-      margin-top: 0;
-      font-size: 1rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.5rem;
-    }
-
-    .ramo {
-      background-color: #eee;
-      padding: 0.5rem;
-      margin: 0.4rem 0;
-      border-radius: 4px;
-      font-size: 0.88rem;
-      font-weight: bold;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .ramo.bloqueado {
-      background-color: #ccc;
-      cursor: not-allowed;
-      opacity: 0.4;
-    }
-
-    .ramo.aprobado {
-      opacity: 0.6;
-      text-decoration: line-through;
-    }
-
-    .ramo.basico {
-      border-left: 5px solid #006957;
-      background-color: #E8EDEB;
-      color: #006957;
-    }
-
-    .ramo.intermedio {
-      border-left: 5px solid #00A9DC;
-      background-color: #EEF7FD;
-      color: #00A9DC;
-    }
-
-    .ramo.avanzado {
-      border-left: 5px solid #6FB065;
-      background-color: #ECF3E9;
-      color: #6FB065;
-    }
-  </style>
 </head>
 <body>
   <h1>Malla Interactiva Medicina USS</h1>
+  <div class="linea-tiempo"></div>
 
-  <!-- CONTENEDOR PRINCIPAL -->
-  <div class="linea-tiempo">
-    <!-- Los semestres se insertan dinámicamente con JS -->
-  </div>
-
-  <!-- CARGA DE SCRIPTS -->
-  <script src="ramos.js"></script>
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const contenedor = document.querySelector('.linea-tiempo');
+      contenedor.innerHTML = `
+        <div class="semestre basico">
+          <h3>Semestre 1</h3>
+          <div class="ramo basico">Biología Celular</div>
+        </div>
+      `;
+    });
+  </script>
 </body>
 </html>
