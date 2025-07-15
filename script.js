@@ -134,7 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
     crearSemestres();
     Object.entries(ramos).forEach(([n,d]) => crearRamo(n,d));
     Object.entries(ramos).forEach(([n,d]) => {
-      if (!d.requisitos || d.requisitos.length === 0) desbloquear(n);
+      const requisitos = d.requisitos ?? []; 
+      if (requisitos.length === 0) desbloquear(n);
     });
   }
 
