@@ -260,7 +260,7 @@ const ramos = {
     abre: ["Internado de Medicina Interna"]
   },
 
-  // === CICLO AVANZADO ===
+// === CICLO AVANZADO ===
 
 // Semestre 11
 "Internado de Medicina Interna": {
@@ -346,6 +346,7 @@ const ramos = {
     "Internado de Cirugía y Urología",
     "Internado Electivo II"
   ]
+}
 }
 
 document.addEventListener("DOMContentLoaded", () => {
