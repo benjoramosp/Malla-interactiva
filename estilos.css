@@ -39,17 +39,20 @@ h1 {
   transform: scale(1.01);
 }
 
-/* === FONDOS SEGÚN CICLO === */
+/* === FONDOS DE SEMESTRES SEGÚN CICLO === */
 .semestre.basico {
-  background-color: #E8EDEB;
+  background-color: #E8EDEB; /* igual que fondo de ramo básico */
+  border-left: 6px solid #006957;
 }
 
 .semestre.intermedio {
-  background-color: #EEF7FD;
+  background-color: #EEF7FD; /* igual que fondo de ramo intermedio */
+  border-left: 6px solid #00A9DC;
 }
 
 .semestre.avanzado {
-  background-color: #ECF3E9;
+  background-color: #ECF3E9; /* igual que fondo de ramo avanzado */
+  border-left: 6px solid #6FB065;
 }
 
 /* === TÍTULO DEL SEMESTRE === */
