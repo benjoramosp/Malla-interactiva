@@ -293,17 +293,17 @@ const ramos = {
 "Internado de Especialidades de la Medicina Interna": {
   ciclo: "avanzado", semestre: 13,
   requisitos: ["Internado de Medicina Interna", "Internado de Salud Mental"],
-  abre: ["Internado de Ginecología y Obstetricia", "Razonamiento Médico - Clínico IV"]
+  abre: ["Internado de Ginecología y Obstetricia", "Razonamiento Médico - Clínico IV", "Internado de Medicina de Urgencia y Traumatología"]
 },
 "Internado de Cirugía y Urología": {
   ciclo: "avanzado", semestre: 13,
   requisitos: ["Internado de Medicina Interna"],
-  abre: ["Internado de Ginecología y Obstetricia", "Razonamiento Médico - Clínico IV"]
+  abre: ["Internado de Ginecología y Obstetricia", "Razonamiento Médico - Clínico IV", "Internado de Medicina de Urgencia y Traumatología"]
 },
 "Internado Electivo II": {
   ciclo: "avanzado", semestre: 13,
   requisitos: ["Internado de Medicina Familiar"],
-  abre: ["Internado de Ginecología y Obstetricia", "Razonamiento Médico - Clínico IV"]
+  abre: ["Internado de Ginecología y Obstetricia", "Razonamiento Médico - Clínico IV", "Internado de Medicina de Urgencia y Traumatología"]
 },
 
 // Semestre 14
