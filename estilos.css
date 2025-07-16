@@ -41,17 +41,17 @@ h1 {
 
 /* === FONDOS DE SEMESTRES SEGÚN CICLO === */
 .semestre.basico {
-  background-color: #E8EDEB; /* igual que fondo de ramo básico */
+  background-color: #E8EDEB;
   border-left: 6px solid #006957;
 }
 
 .semestre.intermedio {
-  background-color: #EEF7FD; /* igual que fondo de ramo intermedio */
+  background-color: #EEF7FD;
   border-left: 6px solid #00A9DC;
 }
 
 .semestre.avanzado {
-  background-color: #ECF3E9; /* igual que fondo de ramo avanzado */
+  background-color: #ECF3E9;
   border-left: 6px solid #6FB065;
 }
 
@@ -94,59 +94,42 @@ h1 {
   cursor: pointer;
 }
 
-/* === RAMO APROBADO CON TACHADO EN DIAGONAL === */
-/* === RAMO APROBADO CON TACHADO Y COLOR OSCURECIDO SEGÚN CICLO === */
+/* === RAMO APROBADO === */
 .ramo.aprobado {
-  opacity: 0.6;
   position: relative;
 }
 
-/* Basico aprobado: verde oscuro apagado */
+/* Aprobado: línea tachada en diagonal */
+.ramo.aprobado::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.4);
+  transform: rotate(-45deg);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+/* === RAMO APROBADO SEGÚN CICLO CON COLORES MÁS OSCUROS === */
 .ramo.aprobado.basico {
   background-color: #c4d4d1;
   color: #00483d;
   border-color: #00483d;
 }
 
-/* Intermedio aprobado: azul más oscuro */
 .ramo.aprobado.intermedio {
   background-color: #cce7f4;
   color: #0078a4;
   border-color: #0078a4;
 }
 
-/* Avanzado aprobado: verde oliva apagado */
 .ramo.aprobado.avanzado {
   background-color: #d4e6cc;
   color: #4e8645;
   border-color: #4e8645;
-}
-
-/* Línea tachada en diagonal */
-.ramo.aprobado::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: rgba(0, 0, 0, 0.4);
-  transform: rotate(-45deg);
-  transform-origin: center;
-  pointer-events: none;
-}
-
-.ramo.aprobado::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: rgba(0, 0, 0, 0.4);
-  transform: rotate(-45deg);
-  transform-origin: center;
-  pointer-events: none;
 }
 
 /* === COLORES DE LOS RAMOS POR CICLO === */
