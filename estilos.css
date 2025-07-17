@@ -1,3 +1,8 @@
+/* === RESET GENERAL === */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* === ESTILO GENERAL === */
 body {
   font-family: Arial, sans-serif;
@@ -99,7 +104,7 @@ h1 {
   position: relative;
 }
 
-/* Aprobado: línea tachada en diagonal */
+/* Línea tachada en diagonal */
 .ramo.aprobado::after {
   content: "";
   position: absolute;
