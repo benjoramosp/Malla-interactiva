@@ -60,6 +60,23 @@ h1 {
   border-left: 6px solid #6FB065;
 }
 
+/* === SEMESTRES POR NÚMERO (COLORES FIJOS) === */
+.semestre-1, .semestre-2, .semestre-3, .semestre-4 {
+  background-color: #E8EDEB;
+  border-left: 6px solid #006957;
+}
+
+.semestre-5, .semestre-6, .semestre-7, .semestre-8,
+.semestre-9, .semestre-10 {
+  background-color: #EEF7FD;
+  border-left: 6px solid #00A9DC;
+}
+
+.semestre-11, .semestre-12, .semestre-13, .semestre-14 {
+  background-color: #ECF3E9;
+  border-left: 6px solid #6FB065;
+}
+
 /* === TÍTULO DEL SEMESTRE === */
 .semestre h3 {
   text-align: center;
