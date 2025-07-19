@@ -62,12 +62,13 @@ h1 {
 .semestre h3 {
   text-align: center;
   font-size: 1.1rem;
-  margin-bottom: 12px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 6px;
-  color: #444;
+  margin: -12px -12px 12px -12px;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  color: inherit;
+  background-color: inherit;
+  border-bottom: 2px solid #ccc;
 }
-
 /* === RAMO (CUADROS) === */
 .ramo {
   background-color: #fff;
