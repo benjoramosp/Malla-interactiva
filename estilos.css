@@ -60,14 +60,15 @@ h1 {
 
 /* === TÍTULO DEL SEMESTRE === */
 .semestre h3 {
-  text-align: center;
-  font-size: 1.1rem;
   margin: -12px -12px 12px -12px;
   padding: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
   border-radius: 10px 10px 0 0;
   color: inherit;
   background-color: inherit;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 /* === RAMO (CUADROS) === */
 .ramo {
