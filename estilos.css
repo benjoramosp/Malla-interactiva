@@ -44,37 +44,18 @@ h1 {
   transform: scale(1.01);
 }
 
-/* === FONDOS DE SEMESTRES SEGÚN CICLO === */
-.semestre.basico {
-  background-color: #E8EDEB;
-  border-left: 6px solid #006957;
-}
-
-.semestre.intermedio {
-  background-color: #EEF7FD;
-  border-left: 6px solid #00A9DC;
-}
-
-.semestre.avanzado {
-  background-color: #ECF3E9;
-  border-left: 6px solid #6FB065;
-}
-
-/* === SEMESTRES POR NÚMERO (COLORES FIJOS) === */
+/* === FONDOS DE SEMESTRES SEGÚN NÚMERO === */
 .semestre-1, .semestre-2, .semestre-3, .semestre-4 {
   background-color: #E8EDEB;
-  border-left: 6px solid #006957;
 }
 
 .semestre-5, .semestre-6, .semestre-7, .semestre-8,
 .semestre-9, .semestre-10 {
   background-color: #EEF7FD;
-  border-left: 6px solid #00A9DC;
 }
 
 .semestre-11, .semestre-12, .semestre-13, .semestre-14 {
   background-color: #ECF3E9;
-  border-left: 6px solid #6FB065;
 }
 
 /* === TÍTULO DEL SEMESTRE === */
@@ -135,7 +116,7 @@ h1 {
   pointer-events: none;
 }
 
-/* === RAMO APROBADO SEGÚN CICLO CON COLORES MÁS OSCUROS === */
+/* === RAMO APROBADO SEGÚN CICLO === */
 .ramo.aprobado.basico {
   background-color: #c4d4d1;
   color: #00483d;
