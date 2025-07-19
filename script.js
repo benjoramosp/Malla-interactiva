@@ -1,6 +1,17 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ==== GESTIÓN DE LOCALSTORAGE ====
+
+function obtenerAprobados() {
+  const data = localStorage.getItem('mallaAprobados');
+  return data ? JSON.parse(data) : [];
+}
+
+function guardarAprobados(aprobados) {
+  localStorage.setItem('mallaAprobados', JSON.stringify(aprobados));
+}
+  
   function crearSemestres() {
     const cont = document.querySelector(".linea-tiempo");
     for (let i = 1; i <= 14; i++) {
@@ -59,5 +70,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+function actualizarDesbloqueos() {
+  const aprobados = obtenerAprobados();
+
+  for (const [nombre, datos] of Object.entries(ramos)) {
+    const elemento = document.getElementById(nombre);
+    if (!elemento) continue;
+
+    const requisitos = datos.requisitos || [];
+    const desbloqueado = requisitos.every(req => aprobados.includes(req));
+
+    if (!elemento.classList.contains('aprobado')) {
+      if (desbloqueado) {
+        elemento.classList.remove('bloqueado');
+      } else {
+        elemento.classList.add('bloqueado');
+      }
+    } else {
+      elemento.classList.remove('bloqueado');
+    }
+  }
+}
+  
   init();
 });
