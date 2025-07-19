@@ -1,4 +1,16 @@
+document.addEventListener("DOMContentLoaded", () => {
 
+  function crearSemestres() {
+    const cont = document.querySelector(".linea-tiempo");
+    for (let i = 1; i <= 14; i++) {
+      const c = document.createElement("div");
+      c.className = `semestre semestre-${i}`;
+      const h = document.createElement("h3");
+      h.textContent = `Semestre ${i}`;
+      c.appendChild(h);
+      cont.appendChild(c);
+    }
+  }
 // ==== GESTIÓN DE LOCALSTORAGE ====
 
 function obtenerAprobados() {
@@ -10,121 +22,100 @@ function guardarAprobados(aprobados) {
   localStorage.setItem('mallaAprobados', JSON.stringify(aprobados));
 }
 
-// ==== CREAR SEMESTRES ====
-
-function crearSemestres() {
-  const contenedor = document.querySelector(".linea-tiempo");
-  for (let i = 1; i <= 14; i++) {
+  function crearRamo(n, d) {
     const div = document.createElement("div");
-    div.className = `semestre semestre-${i}`;
-
-    // Ciclo visual
-    if (i <= 4) div.classList.add("basico");
-    else if (i <= 10) div.classList.add("intermedio");
-    else div.classList.add("avanzado");
-
-    const h3 = document.createElement("h3");
-    h3.textContent = `Semestre ${i}`;
-    div.appendChild(h3);
-    contenedor.appendChild(div);
+    div.className = `ramo bloqueado ${d.ciclo}`;
+    div.textContent = n;
+    div.dataset.nombre = n;
+    div.dataset.estado = "bloqueado";
+    const col = document.querySelector(`.semestre-${d.semestre}`);
+    col && col.appendChild(div);
   }
-}
 
-// ==== CREAR RAMO ====
-
-function crearRamo(nombre, datos) {
-  const div = document.createElement("div");
-  div.className = `ramo bloqueado ${datos.ciclo}`;
-  div.textContent = nombre;
-  div.dataset.nombre = nombre;
-  div.dataset.estado = "bloqueado";
-  div.id = nombre;
-
-  const col = document.querySelector(`.semestre-${datos.semestre}`);
-  if (col) col.appendChild(div);
-}
-
-// ==== DESBLOQUEAR ====
-
-function desbloquear(nombre) {
-  const div = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
-  if (!div || div.dataset.estado !== "bloqueado") return;
-
-  const requisitos = ramos[nombre].requisitos || [];
-  const cumple = requisitos.every(req => {
-    const elem = document.querySelector(`.ramo[data-nombre="${req}"]`);
-    return elem && elem.dataset.estado === "aprobado";
-  });
-
-  if (cumple) {
-    div.classList.remove("bloqueado");
-    div.classList.add("activo");
-    div.dataset.estado = "activo";
-
-    div.addEventListener("click", () => manejarAprobacion(div));
+  function desbloquear(n) {
+    const div = document.querySelector(`.ramo[data-nombre="${n}"]`);
+    if (!div || div.dataset.estado !== "bloqueado") return;
+    const reqs = ramos[n].requisitos || [];
+    const ok = reqs.every(r => {
+      const e = document.querySelector(`.ramo[data-nombre="${r}"]`);
+      return e && e.dataset.estado === "aprobado";
+    });
+    if (ok) {
+      div.classList.remove("bloqueado");
+      div.classList.add("activo");
+      div.dataset.estado = "activo";
+      div.addEventListener("click", () => aprobar(n));
+    }
   }
-}
 
-// ==== MANEJAR APROBACIÓN Y DESAPROBACIÓN ====
-
-function manejarAprobacion(div) {
-  const nombre = div.dataset.nombre;
-  const estado = div.dataset.estado;
-
-  if (estado === "bloqueado") return;
-
-  const aprobados = obtenerAprobados();
-  const yaAprobado = aprobados.includes(nombre);
-
-  if (yaAprobado) {
-    // Desaprobar
-    div.classList.remove("aprobado");
-    div.dataset.estado = "activo";
-    guardarAprobados(aprobados.filter(r => r !== nombre));
-  } else {
-    // Aprobar
+  function aprobar(n) {
+    const div = document.querySelector(`.ramo[data-nombre="${n}"]`);
+    if (!div) return;
     div.classList.remove("activo");
     div.classList.add("aprobado");
     div.dataset.estado = "aprobado";
-    guardarAprobados([...aprobados, nombre]);
-
-    // Desbloquear los que abre
-    (ramos[nombre].abre || []).forEach(desbloquear);
+    const clone = div.cloneNode(true);
+    div.parentNode.replaceChild(clone, div);
+    (ramos[n].abre || []).forEach(desbloquear);
   }
 
-  // Clonar para evitar listeners duplicados
-  const clon = div.cloneNode(true);
-  clon.addEventListener("click", () => manejarAprobacion(clon));
-  div.parentNode.replaceChild(clon, div);
+  function init() {
+    crearSemestres();
+    Object.entries(ramos).forEach(([n,d]) => crearRamo(n,d));
+    Object.entries(ramos).forEach(([n,d]) => {
+      const requisitos = d.requisitos ?? []; 
+      if (requisitos.length === 0) desbloquear(n);
+    });
+  
+
+ actualizarDesbloqueos();
 }
 
-// ==== CARGAR ESTADO GUARDADO Y DESBLOQUEAR ====
+// ==== ACTUALIZAR DESBLOQUEOS ====
 
-function cargarEstado() {
+function actualizarDesbloqueos() {
   const aprobados = obtenerAprobados();
 
-  aprobados.forEach(nombre => {
-    const div = document.querySelector(`.ramo[data-nombre="${nombre}"]`);
-    if (div) {
-      div.classList.remove("bloqueado", "activo");
-      div.classList.add("aprobado");
-      div.dataset.estado = "aprobado";
+  for (const [nombre, datos] of Object.entries(ramos)) {
+    const elemento = document.getElementById(nombre);
+    if (!elemento) continue;
 
-      // Desbloquear lo que abre
-      (ramos[nombre].abre || []).forEach(desbloquear);
+    const requisitos = datos.requisitos || [];
+    const desbloqueado = requisitos.every(req => aprobados.includes(req));
+
+    if (!elemento.classList.contains('aprobado')) {
+      if (desbloqueado) {
+        elemento.classList.remove('bloqueado');
+      } else {
+        elemento.classList.add('bloqueado');
+      }
+    } else {
+      elemento.classList.remove('bloqueado');
     }
-  });
+  }
 }
 
-// ==== INICIALIZAR ====
+// ==== MANEJAR APROBACIÓN ====
 
-document.addEventListener("DOMContentLoaded", () => {
-  crearSemestres();
-  Object.entries(ramos).forEach(([nombre, datos]) => crearRamo(nombre, datos));
-  cargarEstado();
+function manejarAprobacion(e) {
+  const ramo = e.currentTarget;
+  if (ramo.classList.contains('bloqueado')) return;
 
-  Object.entries(ramos).forEach(([nombre, datos]) => {
-    const requisitos = datos.requisitos || [];
-    if (requisitos.length === 0) desbloquear(nombre);
-  });
+  ramo.classList.toggle('aprobado');
+
+  const aprobados = obtenerAprobados();
+  const nombre = ramo.id;
+
+  if (ramo.classList.contains('aprobado')) {
+    if (!aprobados.includes(nombre)) aprobados.push(nombre);
+  } else {
+    const index = aprobados.indexOf(nombre);
+    if (index > -1) aprobados.splice(index, 1);
+  }
+
+  guardarAprobados(aprobados);
+  actualizarDesbloqueos();
+}
+
+  init();
 });
