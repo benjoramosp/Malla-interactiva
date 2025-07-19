@@ -1,7 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // ==== GESTIÓN DE LOCALSTORAGE ====
-
-  // ==== FUNCIONES DE LOCALSTORAGE ====
+// ==== GESTIÓN DE LOCALSTORAGE ====
 
 function obtenerAprobados() {
   const data = localStorage.getItem('mallaAprobados');
@@ -12,22 +9,19 @@ function guardarAprobados(aprobados) {
   localStorage.setItem('mallaAprobados', JSON.stringify(aprobados));
 }
 
-// ==== CÁLCULO DE CRÉDITOS APROBADOS ====
-
-function calcularCreditosAprobados() {
-  const aprobados = obtenerAprobados();
-  return aprobados.reduce((suma, ramo) => suma + (creditos[ramo] || 0), 0);
-}
-
 // ==== CREAR LA MALLA ====
 
 function crearMalla() {
   const lineaTiempo = document.querySelector('.linea-tiempo');
+  if (!lineaTiempo) return;
+
   const aprobados = obtenerAprobados();
 
   for (let semestre = 1; semestre <= 14; semestre++) {
     const divSemestre = document.createElement('div');
     divSemestre.classList.add('semestre');
+
+    // Asignar clase de ciclo
     if (semestre <= 4) divSemestre.classList.add('basico');
     else if (semestre <= 10) divSemestre.classList.add('intermedio');
     else divSemestre.classList.add('avanzado');
@@ -47,6 +41,7 @@ function crearMalla() {
           divRamo.classList.add('aprobado');
         }
 
+        divRamo.addEventListener('click', manejarAprobacion);
         divSemestre.appendChild(divRamo);
       }
     }
@@ -54,7 +49,6 @@ function crearMalla() {
     lineaTiempo.appendChild(divSemestre);
   }
 
-  agregarEventosRamos();
   actualizarDesbloqueos();
 }
 
@@ -62,70 +56,49 @@ function crearMalla() {
 
 function actualizarDesbloqueos() {
   const aprobados = obtenerAprobados();
-  const totalCreditos = calcularCreditosAprobados();
 
-  for (const [destino, reqs] of Object.entries(prerequisitos)) {
-    const elem = document.getElementById(destino);
-    if (!elem) continue;
+  for (const [nombre, datos] of Object.entries(ramos)) {
+    const elemento = document.getElementById(nombre);
+    if (!elemento) continue;
 
-    let puedeDesbloquear = reqs.every(r => aprobados.includes(r));
+    const requisitos = datos.requisitos || [];
+    const desbloqueado = requisitos.every(req => aprobados.includes(req));
 
-    // Reglas especiales por créditos
-    if (destino === 'modulo1') {
-      puedeDesbloquear = totalCreditos >= 90;
-    }
-    if (destino === 'modulo2') {
-      puedeDesbloquear = aprobados.includes('modulo1') && totalCreditos >= 170;
-    }
-    if (destino === 'internado_electivo' || destino === 'internado_electivo1') {
-      puedeDesbloquear = totalCreditos >= 240;
-    }
-
-    if (!elem.classList.contains('aprobado')) {
-      if (puedeDesbloquear) {
-        elem.classList.remove('bloqueado');
+    if (!elemento.classList.contains('aprobado')) {
+      if (desbloqueado) {
+        elemento.classList.remove('bloqueado');
       } else {
-        elem.classList.add('bloqueado');
+        elemento.classList.add('bloqueado');
       }
     } else {
-      elem.classList.remove('bloqueado');
+      elemento.classList.remove('bloqueado');
     }
   }
 }
 
-// ==== APROBAR / DESAPROBAR ====
+// ==== MANEJAR APROBACIÓN ====
 
-function aprobar(e) {
+function manejarAprobacion(e) {
   const ramo = e.currentTarget;
   if (ramo.classList.contains('bloqueado')) return;
 
   ramo.classList.toggle('aprobado');
 
   const aprobados = obtenerAprobados();
-  const id = ramo.id;
+  const nombre = ramo.id;
 
   if (ramo.classList.contains('aprobado')) {
-    if (!aprobados.includes(id)) aprobados.push(id);
+    if (!aprobados.includes(nombre)) aprobados.push(nombre);
   } else {
-    const idx = aprobados.indexOf(id);
-    if (idx > -1) aprobados.splice(idx, 1);
+    const index = aprobados.indexOf(nombre);
+    if (index > -1) aprobados.splice(index, 1);
   }
 
   guardarAprobados(aprobados);
   actualizarDesbloqueos();
 }
 
-// ==== ASIGNAR EVENTOS ====
+// ==== INICIALIZACIÓN ====
 
-function agregarEventosRamos() {
-  const todosRamos = document.querySelectorAll('.ramo');
-  todosRamos.forEach(ramo => {
-    ramo.addEventListener('click', aprobar);
-  });
-}
+document.addEventListener('DOMContentLoaded', crearMalla);
 
-// ==== INICIALIZAR ====
-
-window.addEventListener('DOMContentLoaded', () => {
-  crearMalla();
-});
